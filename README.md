@@ -2,6 +2,10 @@
 
 `npm i`
 
+### General
+
+`npx expo start`
+
 ### Web
 
 `npm run web`
