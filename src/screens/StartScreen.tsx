@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 export default function StartScreen() {
   return (
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#ffffff',
-    fontSize: 35,
+    fontSize: scale(30),
     textAlign: 'center',
   },
 });
