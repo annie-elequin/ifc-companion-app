@@ -2,18 +2,12 @@ import React from 'react';
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-export default function StartScreen({ navigation }) {
+export default function Scene({ navigation }) {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.button} onPress={() => navigation.navigate('DemoOneScene')}>
+      <Pressable style={styles.button} onPress={() => navigation.goBack()}>
         <Text style={styles.buttonText}>
-          Demo 1
-        </Text>
-      </Pressable>
-
-      <Pressable style={styles.button} onPress={() => navigation.navigate('DemoTwoScene')}>
-        <Text style={styles.buttonText}>
-          Demo 2
+          Back
         </Text>
       </Pressable>
     </View>
