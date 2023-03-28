@@ -2,9 +2,9 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import StartScreen from "./src/screens/StartScreen";
-import DemoOneScene from "./src/screens/DemoOne/scene";
-import DemoTwoScene from "./src/screens/DemoTwo/Scene";
+import StartScreen from "./src/screens/StartScreen/StartScreen";
+import DemoOneScene from "./src/screens/DemoOne/DemoOne";
+import DemoTwoScene from "./src/screens/DemoTwo/DemoTwo";
 
 const Stack = createNativeStackNavigator();
 
