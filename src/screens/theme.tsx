@@ -6,4 +6,9 @@ const colorTheme = {
   },
 };
 
-export const theme = extendTheme({ colors: colorTheme })
+export const theme = extendTheme({
+  colors: colorTheme,
+  config: {
+    initialColorMode: "dark",
+  },
+});
