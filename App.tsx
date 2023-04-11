@@ -1,26 +1,19 @@
 import React from "react";
 import { NativeBaseProvider } from "native-base";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 import { theme } from "./src/screens/theme";
-
-import StartScreen from "./src/screens/StartScreen/StartScreen";
-import DemoOneScene from "./src/screens/DemoOne/DemoOne";
-import DemoTwoScene from "./src/screens/DemoTwo/DemoTwo";
-
-const Stack = createNativeStackNavigator();
+import Navigator from "./src/Navigator";
+import { ThemeContext } from "./src/foam-kit/theme";
+import { BaseTheme } from "./src/foam-kit/BaseTheme";
+import { AppProvider } from "./src/context/AppContext";
 
 export default function App() {
   return (
-    <NativeBaseProvider theme={theme} >
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={StartScreen} />
-          <Stack.Screen name="DemoOneScene" component={DemoOneScene} />
-          <Stack.Screen name="DemoTwoScene" component={DemoTwoScene} />
-        </Stack.Navigator>
-      </NavigationContainer>
+    <NativeBaseProvider theme={theme}>
+      <ThemeContext.Provider value={BaseTheme}>
+        <AppProvider>
+          <Navigator />
+        </AppProvider>
+      </ThemeContext.Provider>
     </NativeBaseProvider>
   );
 }

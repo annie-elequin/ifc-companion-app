@@ -1,45 +1,43 @@
-import React from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
-import { scale } from 'react-native-size-matters';
+import { Button, Center, Heading } from "native-base";
+import React, { useContext } from "react";
+import { AppContext, actions } from "../../context/AppContext";
+import { DemoOne, DemoOneFlow, DemoTwoFlow } from "../../flows";
 
 export default function StartScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Pressable style={styles.button} onPress={() => navigation.navigate('DemoOneScene')}>
-        <Text style={styles.buttonText}>
-          Demo 1
-        </Text>
-      </Pressable>
+  const { dispatch } = useContext(AppContext);
 
-      <Pressable style={styles.button} onPress={() => navigation.navigate('DemoTwoScene')}>
-        <Text style={styles.buttonText}>
-          Demo 2
-        </Text>
-      </Pressable>
-    </View>
+  const onSelectDemo = key => {
+    if (key === 'one') {
+        navigation.navigate('DemoView');
+        dispatch({
+          action: actions.startDemo,
+          payload: {
+            demo: 'one',
+            flow: DemoOne,
+          }
+        })
+    } else if (key === 'two') {
+        alert('Demo Two not ready yet')
+        // navigation.navigate('DemoTwoScene');
+        // dispatch({
+        //   action: actions.startDemo,
+        //   payload: {
+        //     demo: 'two',
+        //     flow: DemoTwoFlow,
+        //   }
+        // })
+    }
+  }
+
+  return (
+    <Center h="full" bg="darkBlue.900">
+      <Heading mb="16">Interstellar Fight Club</Heading>
+      <Button onPress={() => onSelectDemo('one')} mb="8" w="300" h="100" rounded="full">
+        <Heading>Demo One</Heading>
+      </Button>
+      <Button onPress={() => onSelectDemo('two')} w="300" h="100" rounded="full">
+        <Heading>Demo Two</Heading>
+      </Button>
+    </Center>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-  },
-  button: {
-    width: '60%',
-
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    aspectRatio: 4,
-    borderRadius: 15,
-    backgroundColor: '#414141'
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontSize: scale(30),
-    textAlign: 'center',
-  },
-});
