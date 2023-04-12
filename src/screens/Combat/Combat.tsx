@@ -4,7 +4,7 @@ import { useProperty } from "../../foam-kit/hooks";
 import { AppContext } from "../../context/AppContext";
 import { Audio } from "expo-av";
 
-export const Scene = ({ value }) => {
+export const Combat = ({ value }) => {
   const { state } = useContext(AppContext);
 
   const [stepValue] = useProperty({ value, property: "currentStep" });

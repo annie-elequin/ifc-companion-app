@@ -1,7 +1,7 @@
 import { Button, Center, Heading } from "native-base";
 import React, { useContext } from "react";
 import { AppContext, actions } from "../../context/AppContext";
-import { DemoOne, DemoOneFlow, DemoTwoFlow } from "../../flows";
+import { DemoOne, DemoOneFlow, DemoTwoFlow } from "../../flows/flows";
 
 export default function StartScreen({ navigation }) {
   const { dispatch } = useContext(AppContext);
