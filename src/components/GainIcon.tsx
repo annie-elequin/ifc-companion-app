@@ -5,9 +5,13 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 export default function GainIcon(props) {
     const { icon, color } = props;
 
+    const circleSize = 150
+    const circleMargin = circleSize / 50
+    const iconSize = circleSize / 2
+
     return(
-        <Circle m="5" size="150px" bg="white">
-            <Icon as={<MaterialCommunityIcons name={icon} />} color={color} size={75}/>
+        <Circle m={circleMargin} size={circleSize} bg="white">
+            <Icon as={<MaterialCommunityIcons name={icon} />} color={color} size={iconSize}/>
         </Circle>
     )
 }
