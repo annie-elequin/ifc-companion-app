@@ -8,7 +8,7 @@ import {
   Heading,
   Image,
 } from "native-base";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useProperty } from "../foam-kit/hooks";
 import { Audio } from "expo-av";
@@ -17,21 +17,27 @@ import { Combat } from "./Combat/Combat";
 
 export default function DemoView({ navigation }) {
   const { state } = useContext(AppContext);
+
   if (!state.currentFlow) {
     navigation.navigate("Home");
   }
 
-  const [stepValue] = useProperty({
-    value: sceneValue,
+  const [currentStepIndex] = useProperty({
+    value: state.currentFlow,
     property: "currentStep",
   });
+  const [steps] = useProperty({
+    value: state.currentFlow,
+    property: "steps",
+  });
+  const step = steps[currentStepIndex]
 
   const renderStep = () => {
-    switch (stepValue.type) {
+    switch (step.type) {
       case "scene":
-        return <Scene value={stepValue} />;
+        return <Scene value={step.value} />;
       case "combat":
-        return <Combat value={stepValue} />;
+        return <Combat value={step.value} />;
       default:
         return null;
     }
