@@ -1,17 +1,13 @@
 import {
   ArrowBackIcon,
   ArrowForwardIcon,
-  Button,
   Center,
-  Container,
   Fab,
-  Heading,
-  Image,
 } from "native-base";
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useProperty } from "../foam-kit/hooks";
-import { Audio } from "expo-av";
+
 import { Scene } from "./Scene/Scene";
 import { Combat } from "./Combat/Combat";
 
@@ -44,14 +40,7 @@ export default function DemoView({ navigation }) {
   };
 
   return (
-    <Container
-      maxW="full"
-      w="full"
-      h="full"
-      style={{ position: "relative" }}
-      bg="darkBlue.900"
-    >
-      <Heading>Demo One</Heading>
+    <Center h="full" bg="darkBlue.900">
       <Fab
         renderInPortal={false}
         shadow={2}
@@ -73,9 +62,6 @@ export default function DemoView({ navigation }) {
         icon={<ArrowForwardIcon />}
       />
       {renderStep()}
-      {/* <Image source={{ uri: require('../assets/scenes/demoOne/sceneOne/bg.jpg')}} resizeMode='cover' style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} alt='bg' />
-          <Image source={{ uri: require(`../assets/scenes/demoOne/sceneOne/${currentStep.left}`)}} resizeMode='contain' style={{ position: 'absolute', left: 0, bottom: -10 }} w='50%' height='70%' alt='left' />
-          <Image source={{ uri: require(`../assets/scenes/demoOne/sceneOne/${currentStep.right}`)}} resizeMode='contain' style={{ position: 'absolute', right: 0, bottom: -5 }} w='50%' height='70%' alt='right' /> */}
-    </Container>
+    </Center>
   );
 }

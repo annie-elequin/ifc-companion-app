@@ -2,9 +2,9 @@ import React from "react";
 import { HStack, Heading, VStack } from "native-base";
 import GainIcon from "../../components/GainIcon";
 
-export default function Combat({ value }) {
+export const Combat = ({ value }) => {
   return (
-    <VStack h="full" alignItems="center" bg="darkBlue.900">
+    <VStack h="full" alignItems="center">
       <Heading m="10" fontSize="5xl">Combat</Heading>
       <HStack w="full" justifyContent="center">
         <GainIcon icon="sword" color="#BEBEBE"></GainIcon>
