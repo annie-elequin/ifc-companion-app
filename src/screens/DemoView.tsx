@@ -29,17 +29,6 @@ export default function DemoView({ navigation }) {
   });
   const step = steps[currentStepIndex]
 
-  const renderStep = () => {
-    switch (step.type) {
-      case "scene":
-        return <Scene value={step.value} />;
-      case "combat":
-        return <Combat value={step.value} />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <Center h="full" bg="darkBlue.900">
       <Fab

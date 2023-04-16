@@ -59,9 +59,19 @@ export const UnitClass = createFoamClass({
       value: 0,
     },
     {
+      name: "strength",
+      type: "number",
+      value: 0,
+    },
+    {
       name: "isDead",
       type: "boolean",
       value: false,
+    },
+    {
+      name: "maxHealth",
+      type: "number",
+      value: 0,
     },
   ],
   methods: [
@@ -90,6 +100,16 @@ export const UnitClass = createFoamClass({
         } else {
           this.health = 0;
           this.isDead = true;
+        }
+      },
+    },
+    {
+      name: "increaseHealth",
+      code: function (amount) {
+        if (this.health + amount > this.maxHealth) {
+          this.health = this.maxHealth;
+        } else {
+          this.health = this.health + amount;
         }
       },
     },
