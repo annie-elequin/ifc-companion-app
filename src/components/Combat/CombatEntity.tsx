@@ -9,8 +9,8 @@ export default function CombatEntity(props) {
             <AspectRatio ratio={1}>
                 <Image w="100%" h="100%" source={{ uri: image }}></Image>
             </AspectRatio>
-            <VStack w="30%" h="100%" justifyContent="space-between">
-                <Text bold fontSize="4xl" color="#E01212"> - 8/14 +</Text>
+            <VStack p="1%" w="40%" h="100%" justifyContent="space-between">
+                <Text bold fontSize="5xl" color="#E01212"> - 8/14 +</Text>
                 <HStack>
                     <HStack alignItems="center">
                         <Icon as={<MaterialCommunityIcons name="shield" />} color="#333BFF" size="5xl"/>
