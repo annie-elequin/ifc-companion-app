@@ -1,6 +1,8 @@
 import React from "react";
 import { HStack, Heading, VStack } from "native-base";
-import GainIcon from "../../components/GainIcon";
+
+import GainIcon from "../../components/Combat/GainIcon";
+import CombatEntity from "../../components/Combat/CombatEntity";
 
 export const Combat = ({ value }) => {
   return (
@@ -15,6 +17,7 @@ export const Combat = ({ value }) => {
         <GainIcon icon="bottle-tonic-skull" color="#008000"></GainIcon>
         <GainIcon icon="anchor" color="#5A5A5A"></GainIcon>
       </HStack>
+      <CombatEntity image={require("../../assets/combat/characters/dreya.png")} color="#FFFFFF"></CombatEntity>
     </VStack>
   );
 };
