@@ -1,8 +1,8 @@
 import React from "react";
 import { HStack, Heading, VStack } from "native-base";
 
-import GainIcon from "../../components/Combat/GainIcon";
-import CombatEntity from "../../components/Combat/CombatEntity";
+import GainIcon from "./GainIcon";
+import CombatEntity from "./CombatEntity";
 
 export const Combat = ({ value }) => {
   return (

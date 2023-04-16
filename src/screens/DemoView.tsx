@@ -8,8 +8,9 @@ import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useProperty } from "../foam-kit/hooks";
 
-import { Scene } from "./Scene/Scene";
-import { Combat } from "./Combat/Combat";
+import { Audio } from "expo-av";
+import { Scene } from "../components/Scene";
+import { Combat } from "../components/Combat/Combat";
 
 export default function DemoView({ navigation }) {
   const { state } = useContext(AppContext);
@@ -55,7 +56,8 @@ export default function DemoView({ navigation }) {
         size="sm"
         icon={<ArrowForwardIcon/>}
       />
-      {renderStep()}
+      {/* {renderStep()} */}
+      {step.value.toElement()}
     </Center>
   );
 }
