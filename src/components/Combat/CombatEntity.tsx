@@ -16,6 +16,10 @@ export default function CombatEntity(props) {
                         <Icon as={<MaterialCommunityIcons name="shield" />} color="#333BFF" size="5xl"/>
                         <Text bold fontSize="5xl" color="#000000">5</Text>
                     </HStack>
+                    <HStack alignItems="center">
+                        <Icon as={<MaterialCommunityIcons name="arm-flex" />} color="#fff64a" size="5xl"/>
+                        <Text bold fontSize="5xl" color="#000000">2</Text>
+                    </HStack>
                 </HStack>
             </VStack>
         </View>
