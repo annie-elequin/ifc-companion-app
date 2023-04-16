@@ -43,23 +43,17 @@ export default function DemoView({ navigation }) {
     <Center h="full" bg="darkBlue.900">
       <Fab
         renderInPortal={false}
+        placement="top-left"
         shadow={2}
-        left={3}
-        top={3}
-        right="unset"
-        bottom="unset"
-        size="md"
-        icon={<ArrowBackIcon />}
+        size="sm"
+        icon={<ArrowBackIcon/>}
       />
       <Fab
+        placement="top-right"
         renderInPortal={false}
         shadow={2}
-        right={3}
-        top={3}
-        left="unset"
-        bottom="unset"
-        size="md"
-        icon={<ArrowForwardIcon />}
+        size="sm"
+        icon={<ArrowForwardIcon/>}
       />
       {renderStep()}
     </Center>
