@@ -116,6 +116,43 @@ const CassiusClass = createFoamClass({
   ]
 })
 
+const ScourgeClass = createFoamClass({
+  name: 'Scourge',
+  inherits: UnitClass,
+  properties: [
+    {
+      name: 'health',
+      type: 'number',
+      value: 10,
+    },
+    {
+      name: 'image',
+      type: 'string',
+      value: require('../assets/combat/scourge.png')
+    },
+    {
+      name: 'maxHealth',
+      type: 'number',
+      value: 10
+    }
+  ],
+  methods: [
+    {
+      name: 'toElement',
+      code: function () {
+        return React.createElement(
+          function ({ value }) {
+            return (
+              <MercenaryView value={value} />
+            );
+          },
+          { value: this }
+        );
+      },
+    }
+  ]
+})
+
 function MercenaryView({value}) {
   const [image] = useProperty({value, property: 'image'})
   const [health] = useProperty({value, property: 'health'})
@@ -145,5 +182,6 @@ function MercenaryView({value}) {
 export {
   FoulbornClass,
   DreyaClass,
+  ScourgeClass,
   CassiusClass
 }
