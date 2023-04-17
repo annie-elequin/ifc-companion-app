@@ -41,5 +41,9 @@ export let Types = {
   string: new Type({
       name: 'string',
       defaultValue: undefined,
+  }),
+  image: new Type({
+      name: 'image',
+      defaultValue: null,
   })
 };

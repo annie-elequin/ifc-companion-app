@@ -1,4 +1,6 @@
+import React from "react";
 import { createFoamClass } from "../foam-kit/model";
+import { View } from "native-base";
 
 export const StepClass = createFoamClass({
   name: "StepClass",
@@ -73,6 +75,11 @@ export const UnitClass = createFoamClass({
       type: "number",
       value: 0,
     },
+    {
+      name: "image",
+      type: "image",
+      value: require("../assets/img/unit-placeholder.webp"),
+    },
   ],
   methods: [
     {
@@ -111,6 +118,17 @@ export const UnitClass = createFoamClass({
         } else {
           this.health = this.health + amount;
         }
+      },
+    },
+    {
+      name: "toElement",
+      code: function () {
+        return React.createElement(
+          function ({ value }) {
+            return <View>Combat Abstract Unit</View>;
+          },
+          { value: this }
+        );
       },
     },
   ],
