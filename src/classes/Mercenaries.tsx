@@ -42,6 +42,43 @@ const FoulbornClass = createFoamClass({
   ]
 })
 
+const DreyaClass = createFoamClass({
+  name: 'Dreya',
+  inherits: UnitClass,
+  properties: [
+    {
+      name: 'health',
+      type: 'number',
+      value: 10,
+    },
+    {
+      name: 'image',
+      type: 'string',
+      value: require('../assets/combat/dreya.png')
+    },
+    {
+      name: 'maxHealth',
+      type: 'number',
+      value: 10
+    }
+  ],
+  methods: [
+    {
+      name: 'toElement',
+      code: function () {
+        return React.createElement(
+          function ({ value }) {
+            return (
+              <MercenaryView value={value} />
+            );
+          },
+          { value: this }
+        );
+      },
+    }
+  ]
+})
+
 const CassiusClass = createFoamClass({
   name: 'Cassius',
   inherits: UnitClass,
@@ -102,10 +139,11 @@ function MercenaryView({value}) {
             </HStack>
         </VStack>
     </View>
-)
+  )
 }
 
 export {
   FoulbornClass,
+  DreyaClass,
   CassiusClass
 }
