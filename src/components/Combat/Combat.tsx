@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { HStack, Heading, VStack } from "native-base";
 import GainIcon from "./GainIcon";
-import CombatEntity from "./CombatEntity";
 import { useProperty } from "../../foam-kit/hooks";
 
 export const Combat = ({ value }) => {
