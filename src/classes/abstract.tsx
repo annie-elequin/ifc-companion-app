@@ -78,7 +78,7 @@ export const UnitClass = createFoamClass({
     {
       name: "image",
       type: "image",
-      value: require("../assets/img/unit-placeholder.webp"),
+      value: require("../assets/combat/unit-placeholder.webp"),
     },
   ],
   methods: [

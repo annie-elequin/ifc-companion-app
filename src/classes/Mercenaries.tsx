@@ -15,6 +15,11 @@ const FoulbornClass = createFoamClass({
       value: 12,
     },
     {
+      name: 'image',
+      type: 'string',
+      value: require('../assets/combat/foulborn.png')
+    },
+    {
       name: 'maxHealth',
       type: 'number',
       value: 12
@@ -45,6 +50,11 @@ const CassiusClass = createFoamClass({
       name: 'health',
       type: 'number',
       value: 9,
+    },
+    {
+      name: 'image',
+      type: 'string',
+      value: require('../assets/combat/cassius.png')
     },
     {
       name: 'maxHealth',
