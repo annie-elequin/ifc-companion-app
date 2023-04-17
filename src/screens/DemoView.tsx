@@ -4,13 +4,9 @@ import {
   Center,
   Fab,
 } from "native-base";
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useProperty } from "../foam-kit/hooks";
-
-import { Audio } from "expo-av";
-import { Scene } from "../components/Scene";
-import { Combat } from "../components/Combat/Combat";
 
 export default function DemoView({ navigation }) {
   const { state } = useContext(AppContext);
@@ -45,7 +41,6 @@ export default function DemoView({ navigation }) {
         size="sm"
         icon={<ArrowForwardIcon/>}
       />
-      {/* {renderStep()} */}
       {step.value.toElement()}
     </Center>
   );
