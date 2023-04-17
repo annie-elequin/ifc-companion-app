@@ -123,7 +123,7 @@ const ScourgeClass = createFoamClass({
     {
       name: 'health',
       type: 'number',
-      value: 10,
+      value: 14,
     },
     {
       name: 'image',
@@ -133,7 +133,7 @@ const ScourgeClass = createFoamClass({
     {
       name: 'maxHealth',
       type: 'number',
-      value: 10
+      value: 14
     }
   ],
   methods: [
