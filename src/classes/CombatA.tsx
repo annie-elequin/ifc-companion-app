@@ -1,17 +1,12 @@
-import React from 'react';
 import { createFoamClass } from "../foam-kit/model";
-import { Combat } from '../components/Combat/Combat';
+import { CombatClass } from './abstract';
 import { CassiusClass, FoulbornClass } from './Mercenaries';
 import { BerserkerBadgerClass } from './Monsters';
 
 export const CombatA = createFoamClass({
   name: 'CombatA',
+  inherits: CombatClass,
   properties: [
-    {
-      name: 'currentTurn',
-      type: 'number',
-      value: 1,
-    },
     {
       name: 'mercenaries',
       type: 'array',
@@ -30,19 +25,6 @@ export const CombatA = createFoamClass({
         new BerserkerBadgerClass(),
       ]
     }
-  ],
-  methods: [
-    {
-      name: "toElement",
-      code: function () {
-        return React.createElement(
-          function ({ value }) {
-            return <Combat value={value} />;
-          },
-          { value: this }
-        );
-      },
-    },
   ],
   actions: [],
 })

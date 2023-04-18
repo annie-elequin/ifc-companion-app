@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { FlatList, HStack, Heading, Pressable, VStack } from "native-base";
 import GainIcon from "./GainIcon";
-import { useProperty } from "../../foam-kit/hooks";
+import { useProperty } from "../foam-kit/hooks";
 
 export const Combat = ({ value }) => {
+  const [gains] = useProperty({value, property: 'mercenaries'})
   const [mercenaries] = useProperty({value, property: 'mercenaries'})
   const [monsters] = useProperty({value, property: 'monsters'})
 

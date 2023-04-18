@@ -2,6 +2,8 @@ import React from "react";
 import { createFoamClass } from "../foam-kit/model";
 import { View } from "native-base";
 
+import { Combat } from "../components/Combat";
+
 export const StepClass = createFoamClass({
   name: "StepClass",
   properties: [
@@ -139,3 +141,38 @@ export const UnitClass = createFoamClass({
   ],
   actions: [],
 });
+
+export const CombatClass = createFoamClass({
+  name: 'CombatA',
+  properties: [
+    {
+      name: 'currentTurn',
+      type: 'number',
+      value: 1,
+    },
+    {
+      name: 'mercenaries',
+      type: 'array',
+      value: []
+    },
+    {
+      name: 'monsters',
+      type: 'array',
+      value: []
+    }
+  ],
+  methods: [
+    {
+      name: "toElement",
+      code: function () {
+        return React.createElement(
+          function ({ value }) {
+            return <Combat value={value} />;
+          },
+          { value: this }
+        );
+      },
+    },
+  ],
+  actions: [],
+})
