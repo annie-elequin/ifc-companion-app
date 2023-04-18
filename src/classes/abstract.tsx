@@ -3,6 +3,8 @@ import { createFoamClass } from "../foam-kit/model";
 import { View } from "native-base";
 
 import { Combat } from "../components/Combat";
+import GainIcon from "../components/GainIcon";
+import { BleedGainClass, BlockGainClass, DamageGainClass, PierceGainClass, PinGainClass, PoisonGainClass, StrengthGainClass } from "./Gains";
 
 export const StepClass = createFoamClass({
   name: "StepClass",
@@ -143,12 +145,17 @@ export const UnitClass = createFoamClass({
 });
 
 export const CombatClass = createFoamClass({
-  name: 'CombatA',
+  name: 'CombatClass',
   properties: [
     {
       name: 'currentTurn',
       type: 'number',
       value: 1,
+    },
+    {
+      name: 'gains',
+      type: 'array',
+      value: []
     },
     {
       name: 'mercenaries',
@@ -168,6 +175,37 @@ export const CombatClass = createFoamClass({
         return React.createElement(
           function ({ value }) {
             return <Combat value={value} />;
+          },
+          { value: this }
+        );
+      },
+    },
+  ],
+  actions: [],
+})
+
+export const GainClass = createFoamClass({
+  name: "GainClass",
+  properties: [
+    {
+      name: "icon",
+      type: "string",
+      value: "sword",
+    },
+    {
+      name: "color",
+      type: "string",
+      value: "#000000",
+    },
+  ],
+  methods: [
+    {
+      name: "toElement",
+      code: function () {
+        return React.createElement(
+          function ({ value }) {
+            console.log("Woo!")
+            return <GainIcon icon={value.icon} color={value.color}/>;
           },
           { value: this }
         );
