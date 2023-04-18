@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HStack, Heading, VStack } from "native-base";
+import { FlatList, HStack, Heading, VStack } from "native-base";
 import GainIcon from "./GainIcon";
 import { useProperty } from "../../foam-kit/hooks";
 
@@ -21,8 +21,8 @@ export const Combat = ({ value }) => {
         <GainIcon icon="bottle-tonic-skull" color="#008000"></GainIcon>
         <GainIcon icon="anchor" color="#5A5A5A"></GainIcon>
       </HStack>
-      {mercenaries.map(m => m.toElement())}
-      {monsters.map(m => m.toElement())}
+      <FlatList data={mercenaries} numColumns={2} renderItem={({item}) => item.toElement()}/>
+      <FlatList data={monsters} numColumns={2} renderItem={({item}) => item.toElement()}/>
     </VStack>
   );
 };
