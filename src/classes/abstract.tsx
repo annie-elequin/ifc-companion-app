@@ -201,16 +201,25 @@ export const GainClass = createFoamClass({
   methods: [
     {
       name: "toElement",
-      code: function () {
+      code: function (mercenaries, monsters) {
         return React.createElement(
           function ({ value }) {
-            console.log("Woo!")
-            return <GainIcon icon={value.icon} color={value.color}/>;
+            const onPress = function () {
+              value.applyGainToUnits(mercenaries, monsters)
+            }
+
+            return <GainIcon icon={value.icon} color={value.color} callback={onPress} />;
           },
           { value: this }
         );
       },
     },
+    {
+      name: "applyGainToUnits",
+      code: function (mercenaries, monsters) {
+        console.log("Gain applied!")
+      }
+    }
   ],
   actions: [],
 })
