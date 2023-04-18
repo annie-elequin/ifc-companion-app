@@ -16,6 +16,21 @@ export const DamageGainClass = createFoamClass({
         value: "#BEBEBE",
       },
     ],
+    methods: [
+      {
+        name: "applyGainToUnits",
+        code: function (mercenaries, monsters) {
+          // Damage the units!
+          const damageUnit = function (unit) {
+            if (unit.isSelected)
+              unit.doDamage(1)
+          }
+
+          mercenaries.forEach(m => damageUnit(m))
+          monsters.forEach(m => damageUnit(m))
+        },
+      }
+    ],
     actions: [],
 })
 
