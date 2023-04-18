@@ -14,6 +14,16 @@ export const CombatA = createFoamClass({
         new FoulbornClass(),
         new CassiusClass(),
       ]
+    },
+    {
+      name: 'monsters',
+      type: 'array',
+      value: [
+        new BerserkerBadgerClass(),
+        new BerserkerBadgerClass(),
+        new BerserkerBadgerClass(),
+        new BerserkerBadgerClass(),
+      ]
     }
   ],
   methods: [

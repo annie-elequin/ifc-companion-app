@@ -158,7 +158,7 @@ function MercenaryView({value}) {
   const [health] = useProperty({value, property: 'health'})
   const [maxHealth] = useProperty({value, property: 'maxHealth'})
    return (
-    <View w="600" h="200" bgColor='darkBlue.800' display="flex" flexDirection="row" borderRadius={20} overflow='hidden'>
+  <View w="600" h="200" bgColor='darkBlue.800' display="flex" flexDirection="row" borderRadius={20} overflow='hidden'>
         <AspectRatio ratio={1}>
             <Image w="100%" h="100%" source={{ uri: image }}></Image>
         </AspectRatio>

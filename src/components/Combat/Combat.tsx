@@ -5,6 +5,8 @@ import { useProperty } from "../../foam-kit/hooks";
 
 export const Combat = ({ value }) => {
   const [mercenaries] = useProperty({value, property: 'mercenaries'})
+  const [monsters] = useProperty({value, property: 'monsters'})
+
   return (
     <VStack h="full" alignItems="center">
       <Heading m="10" fontSize="5xl">
@@ -20,6 +22,7 @@ export const Combat = ({ value }) => {
         <GainIcon icon="anchor" color="#5A5A5A"></GainIcon>
       </HStack>
       {mercenaries.map(m => m.toElement())}
+      {monsters.map(m => m.toElement())}
     </VStack>
   );
 };
