@@ -16,7 +16,7 @@ const BerserkerBadgerClass = createFoamClass({
     },
     {
       name: 'image',
-      type: 'string',
+      type: 'image',
       value: require('../assets/combat/berserkerbadger.png')
     },
     {

@@ -80,6 +80,11 @@ export const UnitClass = createFoamClass({
       type: "image",
       value: require("../assets/combat/unit-placeholder.webp"),
     },
+    {
+      name: 'isSelected',
+      type: 'boolean',
+      value: false,
+    }
   ],
   methods: [
     {

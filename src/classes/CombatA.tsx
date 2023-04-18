@@ -8,6 +8,11 @@ export const CombatA = createFoamClass({
   name: 'CombatA',
   properties: [
     {
+      name: 'currentTurn',
+      type: 'number',
+      value: 1,
+    },
+    {
       name: 'mercenaries',
       type: 'array',
       value: [

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AspectRatio, HStack, Icon, Image, Text, VStack, View } from "native-base";
+import { AspectRatio, Checkbox, HStack, Icon, Image, Text, VStack, View } from "native-base";
 import { createFoamClass } from "../foam-kit/model";
 import { UnitClass } from "./abstract";
 import { useProperty } from '../foam-kit/hooks';
@@ -16,7 +16,7 @@ const FoulbornClass = createFoamClass({
     },
     {
       name: 'image',
-      type: 'string',
+      type: 'image',
       value: require('../assets/combat/foulborn.png')
     },
     {
@@ -53,7 +53,7 @@ const DreyaClass = createFoamClass({
     },
     {
       name: 'image',
-      type: 'string',
+      type: 'image',
       value: require('../assets/combat/dreya.png')
     },
     {
@@ -157,13 +157,21 @@ function MercenaryView({value}) {
   const [image] = useProperty({value, property: 'image'})
   const [health] = useProperty({value, property: 'health'})
   const [maxHealth] = useProperty({value, property: 'maxHealth'})
+  const [isSelected] = useProperty({value, property: 'isSelected'})
+
+  const onSelectedChange = val => {
+    value.isSelected = val
+  }
    return (
     <View w="600" h="200" bgColor='darkBlue.800' display="flex" flexDirection="row" borderRadius={20} overflow='hidden'>
         <AspectRatio ratio={1}>
-            <Image w="100%" h="100%" source={{ uri: image }}></Image>
+              <Image w="100%" h="100%" source={{ uri: image }} />
         </AspectRatio>
         <VStack p="1%" w="40%" h="100%" justifyContent="space-between">
             <Text bold fontSize="5xl" color="#E01212"> - {health}/{maxHealth} +</Text>
+            <Checkbox value={isSelected} accessibilityLabel="isSelected" width='15%' height='15%' onChange={onSelectedChange}>
+              is Selected
+              </Checkbox>
             <HStack>
                 {/* <HStack alignItems="center">
                     <Icon as={<MaterialCommunityIcons name="shield" />} color="#333BFF" size="5xl"/>
