@@ -1,7 +1,8 @@
 import React from 'react';
 import { createFoamClass } from "../foam-kit/model";
 import { Combat } from '../components/Combat/Combat';
-import { CassiusClass, DreyaClass, FoulbornClass, ScourgeClass } from './Mercenaries';
+import { CassiusClass, FoulbornClass } from './Mercenaries';
+import { BerserkerBadgerClass } from './Monsters';
 
 export const CombatA = createFoamClass({
   name: 'CombatA',
@@ -11,9 +12,7 @@ export const CombatA = createFoamClass({
       type: 'array',
       value: [
         new FoulbornClass(),
-        new DreyaClass(),
         new CassiusClass(),
-        new ScourgeClass(),
       ]
     }
   ],
