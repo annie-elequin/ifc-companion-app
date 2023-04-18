@@ -67,6 +67,21 @@ export const BlockGainClass = createFoamClass({
         value: "#333BFF",
       },
     ],
+    methods: [
+      {
+        name: "applyGainToUnits",
+        code: function (mercenaries, monsters) {
+          // Increase block on the units!
+          const increaseBlock = function (unit) {
+            if (unit.isSelected)
+              unit.increaseBlock(1)
+          }
+
+          mercenaries.forEach(m => increaseBlock(m))
+          monsters.forEach(m => increaseBlock(m))
+        },
+      }
+    ],
     actions: [],
 })
 

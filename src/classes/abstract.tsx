@@ -94,29 +94,42 @@ export const UnitClass = createFoamClass({
       name: "doDamage",
       code: function (amount, pierce = false) {
         if (this.block > 0 && !pierce) {
-          if (this.block > amount) {
-            this.block = this.block - amount;
-            return;
-          } else if (this.block < amount) {
+          if (this.block < amount) {
             const remaining = amount - this.block;
-            this.block = 0;
-            this.reduceHealth(remaining);
+            this.decreaseHealth(remaining);
           }
+
+          this.decreaseBlock(amount)
         } else {
-          this.reduceHealth(amount);
+          this.decreaseHealth(amount);
         }
       },
     },
     {
-      name: "reduceHealth",
+      name: "increaseBlock",
       code: function (amount) {
-        if (this.health > amount) {
-          this.health = this.health - amount;
-        } else {
-          this.health = 0;
-          this.isDead = true;
+        if (this.block <= 0) {
+          this.block = 0;
+          // TODO: Add block gain icon to unit UI
         }
-      },
+
+        this.block += amount;
+        console.log("Block increased to " + this.block);
+      }
+    },
+    {
+      name: "decreaseBlock",
+      code: function (amount) {
+        if (this.block > amount) {
+          this.block = this.block - amount;
+        }
+        else {
+          // TODO: Remove block gain icon from unit UI
+          this.block = 0;
+        }
+
+        console.log("Block decreased to " + this.block);
+      }
     },
     {
       name: "increaseHealth",
@@ -125,6 +138,17 @@ export const UnitClass = createFoamClass({
           this.health = this.maxHealth;
         } else {
           this.health = this.health + amount;
+        }
+      },
+    },
+    {
+      name: "decreaseHealth",
+      code: function (amount) {
+        if (this.health > amount) {
+          this.health = this.health - amount;
+        } else {
+          this.health = 0;
+          this.isDead = true;
         }
       },
     },
