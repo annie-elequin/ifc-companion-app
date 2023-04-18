@@ -4,7 +4,6 @@ import { View } from "native-base";
 
 import { Combat } from "../components/Combat";
 import GainIcon from "../components/GainIcon";
-import { BleedGainClass, BlockGainClass, DamageGainClass, PierceGainClass, PinGainClass, PoisonGainClass, StrengthGainClass } from "./Gains";
 
 export const StepClass = createFoamClass({
   name: "StepClass",
