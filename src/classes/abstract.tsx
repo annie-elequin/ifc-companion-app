@@ -2,7 +2,7 @@ import React from "react";
 import { createFoamClass } from "../foam-kit/model";
 import { View } from "native-base";
 
-import { Combat } from "../components/Combat";
+import { Combat } from "../components/Combat/Combat";
 import GainIcon from "../components/GainIcon";
 
 export const StepClass = createFoamClass({
@@ -220,6 +220,11 @@ export const GainClass = createFoamClass({
       type: "string",
       value: "#000000",
     },
+    {
+      name: 'amount',
+      type: 'number',
+      value: 0,
+    }
   ],
   methods: [
     {
@@ -231,7 +236,7 @@ export const GainClass = createFoamClass({
               value.applyGainToUnits(mercenaries, monsters)
             }
 
-            return <GainIcon icon={value.icon} color={value.color} callback={onPress} />;
+            return <GainIcon value={value} callback={onPress} />;
           },
           { value: this }
         );
@@ -240,7 +245,7 @@ export const GainClass = createFoamClass({
     {
       name: "applyGainToUnits",
       code: function (mercenaries, monsters) {
-        console.log("Gain applied!")
+        console.log("Gain applied: ", this.icon)
       }
     }
   ],

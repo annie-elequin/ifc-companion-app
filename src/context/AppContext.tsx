@@ -1,13 +1,13 @@
-import React, { useReducer } from 'react';
+import React, { useReducer } from "react";
 
 type AppState = {
-    currentDemo: null | 'one' | 'two';
-    currentFlow: any,
+  currentDemo: null | "one" | "two";
+  currentFlow: any;
 };
 
 const initialState: AppState = {
-    currentDemo: null,
-    currentFlow: null,
+  currentDemo: null,
+  currentFlow: null,
 };
 
 export const AppContext = React.createContext({
@@ -18,6 +18,7 @@ export const AppContext = React.createContext({
 export enum actions {
   setStateValue,
   startDemo,
+  clearDemo,
 }
 
 export function AppProvider({ children }) {
@@ -27,15 +28,17 @@ export function AppProvider({ children }) {
     <AppContext.Provider value={{ state, dispatch }}>
       {children}
     </AppContext.Provider>
-  )
+  );
 }
 
 function reducer(state: AppState, { action, payload }) {
   switch (action) {
     case actions.setStateValue:
-        return { ...state, ...payload };
+      return { ...state, ...payload };
     case actions.startDemo:
-        return { ...state, currentDemo: payload.demo, currentFlow: payload.flow };
+      return { ...state, currentDemo: payload.demo, currentFlow: payload.flow };
+    case actions.clearDemo:
+      return { ...state, currentDemo: null, currentFlow: null};
     default:
       return state;
   }
