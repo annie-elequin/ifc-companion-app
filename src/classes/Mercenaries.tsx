@@ -217,7 +217,7 @@ function MercenaryView({ value }) {
       </View>
       <View width="full" height={10} bg='coolGray.800' position={'relative'}>
         <View width={`${healthPercentage}%`} height={10} bg='red.700' />
-        <Text justifyContent={'center'} alignItems={'center'} textAlign={'center'} fontSize={24} position={'absolute'} top={0} left={0} right={0} bottom={0}>{health} / {maxHealth}</Text>
+        <Text fontFamily={'Orbitron_400Regular'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} fontSize={24} position={'absolute'} top={0} left={0} right={0} bottom={0}>{health} / {maxHealth}</Text>
       </View>
     </View>
   );
