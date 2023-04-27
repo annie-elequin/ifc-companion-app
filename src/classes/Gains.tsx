@@ -8,12 +8,12 @@ export const DamageGainClass = createFoamClass({
       {
         name: "icon",
         type: "string",
-        value: "sword",
+        value: "octagram",
       },
       {
         name: "color",
         type: "string",
-        value: "#BEBEBE",
+        value: "#8B0000",
       },
     ],
     methods: [
@@ -98,12 +98,12 @@ export const WoundGainClass = createFoamClass({
       {
         name: "icon",
         type: "string",
-        value: "water",
+        value: "account-injury",
       },
       {
         name: "color",
         type: "string",
-        value: "#FF0000",
+        value: "#5C4033",
       },
     ],
     actions: [],
@@ -161,4 +161,41 @@ export const PinGainClass = createFoamClass({
       },
     ],
     actions: [],
+})
+
+
+export const DisarmGainClass = createFoamClass({
+  name: "DisarmGainClass",
+  inherits: GainClass,
+  properties: [
+    {
+      name: "icon",
+      type: "string",
+      value: "hand-back-left-off",
+    },
+    {
+      name: "color",
+      type: "string",
+      value: "#00003f",
+    },
+  ],
+  actions: [],
+})
+
+export const PainGainClass = createFoamClass({
+  name: "PainGainClass",
+  inherits: GainClass,
+  properties: [
+    {
+      name: "icon",
+      type: "string",
+      value: "star-three-points",
+    },
+    {
+      name: "color",
+      type: "string",
+      value: "#080a0a",
+    },
+  ],
+  actions: [],
 })

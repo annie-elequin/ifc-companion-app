@@ -14,7 +14,7 @@ export const Combat = ({ value }) => {
       <VStack alignSelf={'center'}>
         {gains.map((g, index) => <Box key={index}>{g.toElement(mercenaries, monsters)}</Box>)}
       </VStack>
-       <VStack alignItems={'center'}>
+      <VStack alignItems={'center'}>
         <FlatList
           data={mercenaries}
           numColumns={2}

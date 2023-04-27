@@ -54,11 +54,11 @@ export default function GainIcon({ value }) {
       alignItems={"center"}
       justifyContent={"center"}
       borderRadius={200}
-      style={{ position: "relative", width: 180, height: 100 }}
+      style={{ position: "relative", width: 180, height: 90 }}
     >
       <AspectRatio
         ratio={611 / 452}
-        height={100}
+        height={90}
         position="absolute"
         zIndex={0}
       >
@@ -69,23 +69,23 @@ export default function GainIcon({ value }) {
           alt="Gain Icon"
         />
       </AspectRatio>
-    <Tooltip html={<Popover increase={increase} decrease={decrease} />} position="right" trigger="click" interactive offset={-20} arrow>
-      <HStack zIndex={2} marginBottom="4" padding='2'>
-        <Icon
-          as={<MaterialCommunityIcons name={icon} />}
-          color={color}
-          size="5xl"
-        />
-        <Box width={50} textAlign={"left"} marginLeft="4">
-          <Text
-            bold
-            style={{ fontSize: 30 }}
-            fontFamily={"Orbitron_400Regular"}
-          >
-            {amount}
-          </Text>
-        </Box>
-      </HStack>
+      <Tooltip html={<Popover increase={increase} decrease={decrease} />} position="right" trigger="click" interactive offset={-20} arrow>
+        <HStack zIndex={2} marginBottom="4" padding='2'>
+          <Icon  marginLeft="1"
+            as={<MaterialCommunityIcons name={icon} />}
+            color={color}
+            size="4xl"
+          />
+          <Box width={50} textAlign={"left"} marginLeft="2">
+            <Text
+              bold
+              style={{ fontSize: 25 }}
+              fontFamily={"Orbitron_400Regular"}
+            >
+              {amount}
+            </Text>
+          </Box>
+        </HStack>
       </Tooltip>
     </Box>
   );
