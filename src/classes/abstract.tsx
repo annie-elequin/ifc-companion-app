@@ -9,6 +9,7 @@ import {
   View,
 } from "native-base";
 import Checkbox from "expo-checkbox";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createFoamClass } from "../foam-kit/model";
 import { useProperty } from "../foam-kit/hooks";
 
@@ -120,7 +121,6 @@ export const UnitClass = createFoamClass({
       code: function (amount) {
         if (this.block <= 0) {
           this.block = 0;
-          // TODO: Add block gain icon to unit UI
         }
 
         this.block += amount;
@@ -134,7 +134,6 @@ export const UnitClass = createFoamClass({
           this.block = this.block - amount;
         }
         else {
-          // TODO: Remove block gain icon from unit UI
           this.block = 0;
         }
 
@@ -183,11 +182,15 @@ function UnitView({ value }) {
   const [maxHealth] = useProperty({ value, property: "maxHealth" });
   const [isSelected] = useProperty({ value, property: "isSelected" });
 
+  // Gains
+  const [block] = useProperty({ value, property: "block" });
+
   const healthPercentage = (health / maxHealth) * 100;
 
   const onSelectedChange = (val) => {
     value.isSelected = val;
   };
+
   return (
     <View flexDirection="column" 
     margin={"2"}
@@ -227,14 +230,12 @@ function UnitView({ value }) {
         />
         <VStack p="1%" w="40%" h="100%" justifyContent="space-between">
           <HStack>
-            {/* <HStack alignItems="center">
-                    <Icon as={<MaterialCommunityIcons name="shield" />} color="#333BFF" size="5xl"/>
-                    <Text bold fontSize="5xl" color="#000000">5</Text>
-                </HStack>
-                <HStack alignItems="center">
-                    <Icon as={<MaterialCommunityIcons name="arm-flex" />} color="#fff64a" size="5xl"/>
-                    <Text bold fontSize="5xl" color="#000000">2</Text>
-                </HStack> */}
+            { block > 0 &&
+              <HStack alignItems="center">
+                <Icon as={<MaterialCommunityIcons name="shield" />} color="#333BFF" size="5xl"/>
+                <Text bold fontSize="5xl" color="#FFFFFF">{block}</Text>
+              </HStack>
+            }
           </HStack>
         </VStack>
       </View>
@@ -308,25 +309,15 @@ export const GainClass = createFoamClass({
   methods: [
     {
       name: "toElement",
-      code: function (mercenaries, monsters) {
+      code: function () {
         return React.createElement(
           function ({ value }) {
-            const onPress = function () {
-              value.applyGainToUnits(mercenaries, monsters)
-            }
-
-            return <GainIcon value={value} callback={onPress} />;
+            return <GainIcon value={value}/>;
           },
           { value: this }
         );
       },
     },
-    {
-      name: "applyGainToUnits",
-      code: function (mercenaries, monsters) {
-        console.log("Gain applied: ", this.icon)
-      }
-    }
   ],
   actions: [],
 })

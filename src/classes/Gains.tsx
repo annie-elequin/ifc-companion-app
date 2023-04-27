@@ -20,11 +20,13 @@ export const DamageGainClass = createFoamClass({
       {
         name: "applyGainToUnits",
         code: function (mercenaries, monsters) {
-          const amt = this.amount;
+          const amount = this.amount;
+          
           // Damage the units!
           const damageUnit = function (unit) {
-            if (unit.isSelected)
-              unit.doDamage(amt)
+            if (unit.isSelected) {
+              unit.doDamage(amount)
+            }
           }
 
           mercenaries.forEach(m => damageUnit(m))
@@ -72,10 +74,13 @@ export const BlockGainClass = createFoamClass({
       {
         name: "applyGainToUnits",
         code: function (mercenaries, monsters) {
+          const amount = this.amount;
+
           // Increase block on the units!
           const increaseBlock = function (unit) {
-            if (unit.isSelected)
-              unit.increaseBlock(1)
+            if (unit.isSelected) {
+              unit.increaseBlock(amount)
+            }
           }
 
           mercenaries.forEach(m => increaseBlock(m))

@@ -2,23 +2,15 @@ import React from "react";
 import {
   AspectRatio,
   Box,
-  Button,
-  Circle,
   HStack,
   Icon,
   Image,
-  Pressable,
   Text,
-  VStack,
-  View,
 } from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useProperty } from "../foam-kit/hooks";
-import {
-  Tooltip,
-} from 'react-tippy';
-import {View as RNView, Pressable as RNPressable, Text as RNText} from 'react-native'
-// import Tooltip from 'rn-tooltip';
+import { Tooltip } from 'react-tippy';
+import { View as RNView, Pressable as RNPressable, Text as RNText} from 'react-native'
 
 function Popover({increase, decrease}) {
 
@@ -41,27 +33,20 @@ function Popover({increase, decrease}) {
   )
 }
 
-export default function GainIcon({ value, callback }) {
+export default function GainIcon({ value }) {
   const [icon] = useProperty({ value, property: "icon" });
   const [color] = useProperty({ value, property: "color" });
   const [amount] = useProperty({ value, property: "amount" });
 
-  const circleSize = 70;
-  const circleMargin = circleSize / 70;
-  const iconSize = circleSize / 2;
-
   const increase = () => {
     value.amount = amount + 1;
   };
+
   const decrease = () => {
     if (value.amount > 0) {
       value.amount = amount - 1;
     }
   };
-
-  // const onPress = () => {
-  //   callback();
-  // }
 
   return (
     <Box
@@ -102,42 +87,6 @@ export default function GainIcon({ value, callback }) {
         </Box>
       </HStack>
       </Tooltip>
-      
-
-      {/* <VStack h="full" w="20%" bg="amber.200" style={{ marginLeft: 15 }}>
-        <Pressable flex="1" onPress={increase}>
-          {({ isHovered, isFocused, isPressed }) => (
-            <Box
-              flex="1"
-              alignItems={"center"}
-              justifyContent={"center"}
-              style={{ opacity: isPressed ? 0.5 : 1, backgroundColor: "red" }}
-            >
-              <MaterialCommunityIcons name="plus" color='white' size={24} />
-            </Box>
-          )}
-        </Pressable>
-        <Pressable flex="1" onPress={decrease}>
-          {({ isHovered, isFocused, isPressed }) => (
-            <Box
-              flex="1"
-              alignItems={"center"}
-              justifyContent={"center"}
-              style={{ opacity: isPressed ? 0.5 : 1, backgroundColor: "blue" }}
-            >
-              <MaterialCommunityIcons name='minus' color='white' size={24} />
-            </Box>
-          )}
-        </Pressable>
-      </VStack> */}
     </Box>
   );
-
-  // return(
-  //     <Pressable onPress={callback}>
-  //         <Circle m={circleMargin} size={circleSize} bg="white">
-  //             <Icon as={<MaterialCommunityIcons name={icon} />} color={color} size={iconSize}/>
-  //         </Circle>
-  //     </Pressable>
-  // )
 }
