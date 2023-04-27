@@ -285,48 +285,48 @@ function UnitView({ value }) {
             right: 10,
           }}
         />
-        <VStack p="1%" w="40%" h="100%" justifyContent="space-between">
-          <HStack>
+        <VStack p="1%" w="60%" h="100%" justifyContent="space-between">
+          <HStack flexWrap="wrap" space={2}>
             { block > 0 &&
               <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="shield"/>} color="#333BFF" size="5xl"/>
-                <Text bold fontSize="5xl" color="#FFFFFF">{block}</Text>
+                <Icon as={<MaterialCommunityIcons name="shield"/>} color="#333BFF" size="4xl"/>
+                <Text bold fontSize="4xl" color="#FFFFFF">{block}</Text>
               </HStack>
             }
             { wound > 0 &&
               <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="account-injury"/>} color="#5C4033" size="5xl"/>
-                <Text bold fontSize="5xl" color="#FFFFFF">{wound}</Text>
+                <Icon as={<MaterialCommunityIcons name="account-injury"/>} color="#5C4033" size="4xl"/>
+                <Text bold fontSize="4xl" color="#FFFFFF">{wound}</Text>
               </HStack>
             }
             { flex > 0 &&
               <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="arm-flex"/>} color="#fff64a" size="5xl"/>
-                <Text bold fontSize="5xl" color="#FFFFFF">{flex}</Text>
+                <Icon as={<MaterialCommunityIcons name="arm-flex"/>} color="#fff64a" size="4xl"/>
+                <Text bold fontSize="4xl" color="#FFFFFF">{flex}</Text>
               </HStack>
             }
             { poison > 0 &&
               <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="bottle-tonic-skull"/>} color="#008000" size="5xl"/>
-                <Text bold fontSize="5xl" color="#FFFFFF">{poison}</Text>
+                <Icon as={<MaterialCommunityIcons name="bottle-tonic-skull"/>} color="#008000" size="4xl"/>
+                <Text bold fontSize="4xl" color="#FFFFFF">{poison}</Text>
               </HStack>
             }
             { pin > 0 &&
               <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="anchor"/>} color="#5A5A5A" size="5xl"/>
-                <Text bold fontSize="5xl" color="#FFFFFF">{pin}</Text>
+                <Icon as={<MaterialCommunityIcons name="anchor"/>} color="#5A5A5A" size="4xl"/>
+                <Text bold fontSize="4xl" color="#FFFFFF">{pin}</Text>
               </HStack>
             }
             { disarm > 0 &&
               <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="hand-back-left-off"/>} color="#00003f" size="5xl"/>
-                <Text bold fontSize="5xl" color="#FFFFFF">{disarm}</Text>
+                <Icon as={<MaterialCommunityIcons name="hand-back-left-off"/>} color="#00003f" size="4xl"/>
+                <Text bold fontSize="4xl" color="#FFFFFF">{disarm}</Text>
               </HStack>
             }
             { pain > 0 &&
               <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="star-three-points"/>} color="#080a0a" size="5xl"/>
-                <Text bold fontSize="5xl" color="#FFFFFF">{pain}</Text>
+                <Icon as={<MaterialCommunityIcons name="star-three-points"/>} color="#080a0a" size="4xl"/>
+                <Text bold fontSize="4xl" color="#FFFFFF">{pain}</Text>
               </HStack>
             }
           </HStack>
