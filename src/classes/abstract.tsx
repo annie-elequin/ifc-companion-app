@@ -80,6 +80,21 @@ export const UnitClass = createFoamClass({
       value: 0,
     },
     {
+      name: "disarm",
+      type: "number",
+      value: 0,
+    },
+    {
+      name: "pin",
+      type: "number",
+      value: 0,
+    },
+    {
+      name: "pain",
+      type: "number",
+      value: 0,
+    },
+    {
       name: "isDead",
       type: "boolean",
       value: false,
