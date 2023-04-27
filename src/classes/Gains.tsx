@@ -21,7 +21,7 @@ export const DamageGainClass = createFoamClass({
         name: "applyGainToUnits",
         code: function (mercenaries, monsters) {
           const amount = this.amount;
-          
+
           // Damage the units!
           const damageUnit = function (unit) {
             if (unit.isSelected) {
@@ -91,8 +91,8 @@ export const BlockGainClass = createFoamClass({
     actions: [],
 })
 
-export const BleedGainClass = createFoamClass({
-    name: "BleedGainClass",
+export const WoundGainClass = createFoamClass({
+    name: "WoundGainClass",
     inherits: GainClass,
     properties: [
       {
@@ -109,8 +109,8 @@ export const BleedGainClass = createFoamClass({
     actions: [],
 })
 
-export const StrengthGainClass = createFoamClass({
-    name: "StrengthGainClass",
+export const FlexGainClass = createFoamClass({
+    name: "FlexGainClass",
     inherits: GainClass,
     properties: [
       {

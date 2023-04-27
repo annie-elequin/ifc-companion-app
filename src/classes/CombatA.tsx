@@ -1,8 +1,8 @@
 import { createFoamClass } from "../foam-kit/model";
 import { CombatClass } from './abstract';
 
-import { BleedGainClass, BlockGainClass, DamageGainClass, PierceGainClass,
-  PinGainClass, PoisonGainClass, StrengthGainClass } from "./Gains";
+import { BlockGainClass, DamageGainClass, PierceGainClass,
+  PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass } from "./Gains";
 import { CassiusClass, FoulbornClass } from './Mercenaries';
 import { BerserkerBadgerClass } from './Monsters';
 
@@ -17,8 +17,8 @@ export const CombatA = createFoamClass({
         new DamageGainClass(),
         new PierceGainClass(),
         new BlockGainClass(),
-        new BleedGainClass(),
-        new StrengthGainClass(),
+        new WoundGainClass(),
+        new FlexGainClass(),
         new PoisonGainClass(),
         new PinGainClass(),
       ]

@@ -75,7 +75,7 @@ export const UnitClass = createFoamClass({
       value: 0,
     },
     {
-      name: "strength",
+      name: "flex",
       type: "number",
       value: 0,
     },
