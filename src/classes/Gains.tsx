@@ -52,6 +52,24 @@ export const PierceGainClass = createFoamClass({
         value: "#964B00",
       },
     ],
+    methods: [
+      {
+        name: "applyGainToUnits",
+        code: function (mercenaries, monsters) {
+          const amount = this.amount;
+
+          // Pierce damage the units!
+          const damageUnit = function (unit) {
+            if (unit.isSelected) {
+              unit.doDamage(amount, true)
+            }
+          }
+
+          mercenaries.forEach(m => damageUnit(m))
+          monsters.forEach(m => damageUnit(m))
+        },
+      }
+    ],
     actions: [],
 })
 
@@ -106,6 +124,24 @@ export const WoundGainClass = createFoamClass({
         value: "#5C4033",
       },
     ],
+    methods: [
+      {
+        name: "applyGainToUnits",
+        code: function (mercenaries, monsters) {
+          const amount = this.amount;
+
+          // Increase wound on the units!
+          const increaseWound = function (unit) {
+            if (unit.isSelected) {
+              unit.increaseWound(amount)
+            }
+          }
+
+          mercenaries.forEach(m => increaseWound(m))
+          monsters.forEach(m => increaseWound(m))
+        },
+      }
+    ],
     actions: [],
 })
 
@@ -123,6 +159,24 @@ export const FlexGainClass = createFoamClass({
         type: "string",
         value: "#fff64a",
       },
+    ],
+    methods: [
+      {
+        name: "applyGainToUnits",
+        code: function (mercenaries, monsters) {
+          const amount = this.amount;
+
+          // Add flex to the units!
+          const increaseFlex = function (unit) {
+            if (unit.isSelected) {
+              unit.increaseFlex(amount)
+            }
+          }
+
+          mercenaries.forEach(m => increaseFlex(m))
+          monsters.forEach(m => increaseFlex(m))
+        },
+      }
     ],
     actions: [],
 })
@@ -142,6 +196,24 @@ export const PoisonGainClass = createFoamClass({
         value: "#008000",
       },
     ],
+    methods: [
+      {
+        name: "applyGainToUnits",
+        code: function (mercenaries, monsters) {
+          const amount = this.amount;
+
+          // Add poison to the units!
+          const increasePoison = function (unit) {
+            if (unit.isSelected) {
+              unit.increasePoison(amount)
+            }
+          }
+
+          mercenaries.forEach(m => increasePoison(m))
+          monsters.forEach(m => increasePoison(m))
+        },
+      }
+    ],
     actions: [],
 })
 
@@ -159,6 +231,24 @@ export const PinGainClass = createFoamClass({
         type: "string",
         value: "#5A5A5A",
       },
+    ],
+    methods: [
+      {
+        name: "applyGainToUnits",
+        code: function (mercenaries, monsters) {
+          const amount = this.amount;
+
+          // Add pin to the units!
+          const increasePin = function (unit) {
+            if (unit.isSelected) {
+              unit.increasePin(amount)
+            }
+          }
+
+          mercenaries.forEach(m => increasePin(m))
+          monsters.forEach(m => increasePin(m))
+        },
+      }
     ],
     actions: [],
 })
@@ -179,6 +269,24 @@ export const DisarmGainClass = createFoamClass({
       value: "#00003f",
     },
   ],
+  methods: [
+    {
+      name: "applyGainToUnits",
+      code: function (mercenaries, monsters) {
+        const amount = this.amount;
+
+        // Add disarm to the units!
+        const increaseDisarm = function (unit) {
+          if (unit.isSelected) {
+            unit.increaseDisarm(amount)
+          }
+        }
+
+        mercenaries.forEach(m => increaseDisarm(m))
+        monsters.forEach(m => increaseDisarm(m))
+      },
+    }
+  ],
   actions: [],
 })
 
@@ -196,6 +304,24 @@ export const PainGainClass = createFoamClass({
       type: "string",
       value: "#080a0a",
     },
+  ],
+  methods: [
+    {
+      name: "applyGainToUnits",
+      code: function (mercenaries, monsters) {
+        const amount = this.amount;
+
+        // Add pain to the units!
+        const increasePain = function (unit) {
+          if (unit.isSelected) {
+            unit.increasePain(amount)
+          }
+        }
+
+        mercenaries.forEach(m => increasePain(m))
+        monsters.forEach(m => increasePain(m))
+      },
+    }
   ],
   actions: [],
 })

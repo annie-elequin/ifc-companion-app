@@ -177,6 +177,42 @@ export const UnitClass = createFoamClass({
       },
     },
     {
+      name: "increaseWound",
+      code: function (amount) {
+        this.wound += amount;
+      }
+    },
+    {
+      name: "increaseFlex",
+      code: function (amount) {
+        this.flex += amount;
+      }
+    },
+    {
+      name: "increasePoison",
+      code: function (amount) {
+        this.poison += amount;
+      }
+    },
+    {
+      name: "increasePin",
+      code: function (amount) {
+        this.pin += amount;
+      }
+    },
+    {
+      name: "increaseDisarm",
+      code: function (amount) {
+        this.disarm += amount;
+      }
+    },
+    {
+      name: "increasePain",
+      code: function (amount) {
+        this.pain += amount;
+      }
+    },
+    {
       name: "toElement",
       code: function () {
         return React.createElement(
@@ -199,6 +235,12 @@ function UnitView({ value }) {
 
   // Gains
   const [block] = useProperty({ value, property: "block" });
+  const [wound] = useProperty({ value, property: "wound" });
+  const [flex] = useProperty({ value, property: "flex" });
+  const [poison] = useProperty({ value, property: "poison" });
+  const [pin] = useProperty({ value, property: "pin" });
+  const [disarm] = useProperty({ value, property: "disarm" });
+  const [pain] = useProperty({ value, property: "pain" });
 
   const healthPercentage = (health / maxHealth) * 100;
 
@@ -247,8 +289,44 @@ function UnitView({ value }) {
           <HStack>
             { block > 0 &&
               <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="shield" />} color="#333BFF" size="5xl"/>
+                <Icon as={<MaterialCommunityIcons name="shield"/>} color="#333BFF" size="5xl"/>
                 <Text bold fontSize="5xl" color="#FFFFFF">{block}</Text>
+              </HStack>
+            }
+            { wound > 0 &&
+              <HStack alignItems="center">
+                <Icon as={<MaterialCommunityIcons name="account-injury"/>} color="#5C4033" size="5xl"/>
+                <Text bold fontSize="5xl" color="#FFFFFF">{wound}</Text>
+              </HStack>
+            }
+            { flex > 0 &&
+              <HStack alignItems="center">
+                <Icon as={<MaterialCommunityIcons name="arm-flex"/>} color="#fff64a" size="5xl"/>
+                <Text bold fontSize="5xl" color="#FFFFFF">{flex}</Text>
+              </HStack>
+            }
+            { poison > 0 &&
+              <HStack alignItems="center">
+                <Icon as={<MaterialCommunityIcons name="bottle-tonic-skull"/>} color="#008000" size="5xl"/>
+                <Text bold fontSize="5xl" color="#FFFFFF">{poison}</Text>
+              </HStack>
+            }
+            { pin > 0 &&
+              <HStack alignItems="center">
+                <Icon as={<MaterialCommunityIcons name="anchor"/>} color="#5A5A5A" size="5xl"/>
+                <Text bold fontSize="5xl" color="#FFFFFF">{pin}</Text>
+              </HStack>
+            }
+            { disarm > 0 &&
+              <HStack alignItems="center">
+                <Icon as={<MaterialCommunityIcons name="hand-back-left-off"/>} color="#00003f" size="5xl"/>
+                <Text bold fontSize="5xl" color="#FFFFFF">{disarm}</Text>
+              </HStack>
+            }
+            { pain > 0 &&
+              <HStack alignItems="center">
+                <Icon as={<MaterialCommunityIcons name="star-three-points"/>} color="#080a0a" size="5xl"/>
+                <Text bold fontSize="5xl" color="#FFFFFF">{pain}</Text>
               </HStack>
             }
           </HStack>
