@@ -323,12 +323,6 @@ function UnitView({ value }) {
                 <Text bold fontSize="4xl" color="#FFFFFF">{disarm}</Text>
               </HStack>
             }
-            { pain > 0 &&
-              <HStack alignItems="center">
-                <Icon as={<MaterialCommunityIcons name="star-three-points"/>} color="#080a0a" size="4xl"/>
-                <Text bold fontSize="4xl" color="#FFFFFF">{pain}</Text>
-              </HStack>
-            }
           </HStack>
         </VStack>
       </View>

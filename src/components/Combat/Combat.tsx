@@ -29,6 +29,5 @@ export const Combat = ({ value }) => {
     </HStack>
       <BottomActionBar gains={gains} mercenaries={mercenaries} monsters={monsters} />
     </>
-   
   );
 };
