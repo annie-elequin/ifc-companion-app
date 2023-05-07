@@ -1,7 +1,7 @@
 import React from "react";
 import { Scene } from "../components/Scene";
 import { createFoamClass } from "../foam-kit/model";
-import { StepClass } from "./abstract";
+import { StepClass } from "./Abstract/StepClass";
 
 export const SceneA = createFoamClass({
   name: "SceneA",

@@ -1,5 +1,5 @@
 import { createFoamClass } from "../foam-kit/model";
-import { UnitClass } from "./abstract";
+import { UnitClass } from "./Abstract/UnitClass";
 
 const BerserkerBadgerClass = createFoamClass({
   name: 'BerserkerBadger',

@@ -1,5 +1,5 @@
 import { createFoamClass } from "../foam-kit/model";
-import { GainClass } from "./abstract";
+import { GainClass } from "./Abstract/GainClass";
 
 export const DamageGainClass = createFoamClass({
     name: "DamageGainClass",

@@ -1,5 +1,5 @@
 import { createFoamClass } from "../foam-kit/model";
-import { CombatClass } from './abstract';
+import { CombatClass } from './Abstract/CombatClass';
 
 import { BlockGainClass, DamageGainClass, PierceGainClass,
   PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass, PainGainClass } from "./Gains";
