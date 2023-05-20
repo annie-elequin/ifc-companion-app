@@ -8,12 +8,12 @@ export const HealthGainClass = createFoamClass({
     {
       name: "icon",
       type: "string",
-      value: "octagram",
+      value: "heart",
     },
     {
       name: "color",
       type: "string",
-      value: "#8B0000",
+      value: "#D70040",
     },
   ],
   methods: [
