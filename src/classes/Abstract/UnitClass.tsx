@@ -90,6 +90,20 @@ export const UnitClass = createFoamClass({
     ],
     methods: [
       {
+        name: "setActive",
+        code: function (active) {
+          this.isActive = active;
+
+          if (!active) {
+            this.decreaseWound(1);
+            this.decreaseFlex(1);
+            this.decreasePoison(1);
+            this.decreasePin(1);
+            this.decreaseDisarm(1);
+          }
+        }
+      },
+      {
         name: "doDamage",
         code: function (amount, pierce = false) {
           if (this.block > 0 && !pierce) {
@@ -156,9 +170,29 @@ export const UnitClass = createFoamClass({
         }
       },
       {
+        name: "decreaseWound",
+        code: function (amount) {
+          if (this.wound > amount) {
+            this.wound = this.wound - amount;
+          } else {
+            this.wound = 0;
+          }
+        }
+      },
+      {
         name: "increaseFlex",
         code: function (amount) {
           this.flex += amount;
+        }
+      },
+      {
+        name: "decreaseFlex",
+        code: function (amount) {
+          if (this.flex > amount) {
+            this.flex = this.flex - amount;
+          } else {
+            this.flex = 0;
+          }
         }
       },
       {
@@ -168,9 +202,29 @@ export const UnitClass = createFoamClass({
         }
       },
       {
+        name: "decreasePoison",
+        code: function (amount) {
+          if (this.poison > amount) {
+            this.poison = this.poison - amount;
+          } else {
+            this.poison = 0;
+          }
+        }
+      },
+      {
         name: "increasePin",
         code: function (amount) {
           this.pin += amount;
+        }
+      },
+      {
+        name: "decreasePin",
+        code: function (amount) {
+          if (this.pin > amount) {
+            this.pin = this.pin - amount;
+          } else {
+            this.pin = 0;
+          }
         }
       },
       {
@@ -180,9 +234,29 @@ export const UnitClass = createFoamClass({
         }
       },
       {
+        name: "decreaseDisarm",
+        code: function (amount) {
+          if (this.disarm > amount) {
+            this.disarm = this.disarm - amount;
+          } else {
+            this.disarm = 0;
+          }
+        }
+      },
+      {
         name: "increasePain",
         code: function (amount) {
           this.pain += amount;
+        }
+      },
+      {
+        name: "decreasePain",
+        code: function (amount) {
+          if (this.pain > amount) {
+            this.pain = this.pain - amount;
+          } else {
+            this.pain = 0;
+          }
         }
       },
       {
@@ -223,7 +297,7 @@ function UnitView({ value }) {
     };
   
     const onActiveChanged = () => {
-      value.isActive = !value.isActive;
+      value.setActive(!value.isActive);
     }
 
     return (
