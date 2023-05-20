@@ -221,6 +221,7 @@ function UnitView({ value }) {
     const [maxHealth] = useProperty({ value, property: "maxHealth" });
     const [isSelected] = useProperty({ value, property: "isSelected" });
     const [isActive] = useProperty({ value, property: "isActive" });
+    const [id] = useProperty({ value, property: "id" });
   
     // Gains
     const [block] = useProperty({ value, property: "block" });
@@ -240,6 +241,15 @@ function UnitView({ value }) {
     const onActiveChanged = () => {
       value.isActive = !value.isActive;
     }
+
+    const gains = [
+      { name: 'block', value: block, icon: 'shield', color: '#333BFF'},
+      { name: 'wound', value: wound, icon: 'account-injury', color: '#5C4033'},
+      { name: 'flex', value: flex, icon: 'arm-flex', color: '#fff64a'},
+      { name: 'poison', value: poison, icon: 'bottle-tonic-skull', color: '#008000'},
+      { name: 'pin', value: pin, icon: 'anchor', color: '#5A5A5A'},
+      { name: 'disarm', value: disarm, icon: 'hand-back-left-off', color: '#00003f'},
+    ]
 
     return (
       <View flexDirection="column" 
@@ -268,6 +278,9 @@ function UnitView({ value }) {
               <Box position="absolute" top="0" left="0" w="100%" h="100%" bgColor={"#000000"} style={{opacity: unitOpacity}}></Box>
             </Pressable>
           </AspectRatio>
+          {id && (
+          <Text bold fontSize="2xl" color="#FFFFFF" margin='.5'>{id}</Text>
+          )}
           
           <Checkbox
             value={isSelected}
@@ -284,42 +297,7 @@ function UnitView({ value }) {
           />
           <VStack p="1%" w="60%" h="100%" justifyContent="space-between">
             <HStack flexWrap="wrap" space={2}>
-              { block > 0 &&
-                <HStack alignItems="center">
-                  <Icon as={<MaterialCommunityIcons name="shield"/>} color="#333BFF" size="2xl"/>
-                  <Text bold fontSize="2xl" color="#FFFFFF">{block}</Text>
-                </HStack>
-              }
-              { wound > 0 &&
-                <HStack alignItems="center">
-                  <Icon as={<MaterialCommunityIcons name="account-injury"/>} color="#5C4033" size="2xl"/>
-                  <Text bold fontSize="2xl" color="#FFFFFF">{wound}</Text>
-                </HStack>
-              }
-              { flex > 0 &&
-                <HStack alignItems="center">
-                  <Icon as={<MaterialCommunityIcons name="arm-flex"/>} color="#fff64a" size="2xl"/>
-                  <Text bold fontSize="2xl" color="#FFFFFF">{flex}</Text>
-                </HStack>
-              }
-              { poison > 0 &&
-                <HStack alignItems="center">
-                  <Icon as={<MaterialCommunityIcons name="bottle-tonic-skull"/>} color="#008000" size="2xl"/>
-                  <Text bold fontSize="2xl" color="#FFFFFF">{poison}</Text>
-                </HStack>
-              }
-              { pin > 0 &&
-                <HStack alignItems="center">
-                  <Icon as={<MaterialCommunityIcons name="anchor"/>} color="#5A5A5A" size="2xl"/>
-                  <Text bold fontSize="2xl" color="#FFFFFF">{pin}</Text>
-                </HStack>
-              }
-              { disarm > 0 &&
-                <HStack alignItems="center">
-                  <Icon as={<MaterialCommunityIcons name="hand-back-left-off"/>} color="#00003f" size="2xl"/>
-                  <Text bold fontSize="2xl" color="#FFFFFF">{disarm}</Text>
-                </HStack>
-              }
+              { gains.map(g => <GainPill gain={g} />)}
             </HStack>
           </VStack>
         </View>
@@ -329,4 +307,14 @@ function UnitView({ value }) {
         </View>
       </View>
     );
+}
+
+const GainPill = ({ gain }) => {
+  if (gain.value <= 0) return null;
+  return (
+    <HStack alignItems="center" bg='lightBlue.300' padding='1' borderRadius={15}>
+      <Icon as={<MaterialCommunityIcons name={gain.icon}/>} color={gain.color} size="2xl"/>
+      <Text bold fontSize="2xl" color="#FFFFFF">{gain.value}</Text>
+    </HStack>
+  )
 }
