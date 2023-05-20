@@ -3,7 +3,7 @@ import { CombatClass } from './Abstract/CombatClass';
 
 import { BlockGainClass, DamageGainClass, PierceGainClass,
   PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass, PainGainClass } from "./Gains";
-import { CassiusClass, DreyaClass, FoulbornClass, ScourgeClass } from './Mercenaries';
+import { CassiusClass, FoulbornClass } from './Mercenaries';
 import { ArmadillosClass } from './Monsters';
 
 export const CombatA = createFoamClass({
@@ -29,8 +29,8 @@ export const CombatA = createFoamClass({
       name: 'mercenaries',
       type: 'array',
       value: [
-        new DreyaClass(),
-        new ScourgeClass(),
+        new FoulbornClass(),
+        new CassiusClass(),
       ]
     },
     {

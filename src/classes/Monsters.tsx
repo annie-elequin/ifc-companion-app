@@ -23,4 +23,48 @@ const BerserkerBadgerClass = createFoamClass({
   ],
 })
 
-export { BerserkerBadgerClass }
+const ArmadillosClass = createFoamClass({
+  name: 'Armadillos',
+  inherits: UnitClass,
+  properties: [
+    {
+      name: 'health',
+      type: 'number',
+      value: 16,
+    },
+    {
+      name: 'image',
+      type: 'image',
+      value: require('../assets/combat/armadillos.jpeg')
+    },
+    {
+      name: 'maxHealth',
+      type: 'number',
+      value: 16
+    }
+  ],
+})
+
+const RumblebeesClass = createFoamClass({
+  name: 'Rumblebees',
+  inherits: UnitClass,
+  properties: [
+    {
+      name: 'health',
+      type: 'number',
+      value: 9,
+    },
+    {
+      name: 'image',
+      type: 'image',
+      value: require('../assets/combat/armadillos.jpeg')
+    },
+    {
+      name: 'maxHealth',
+      type: 'number',
+      value: 9
+    }
+  ],
+})
+
+export { BerserkerBadgerClass, ArmadillosClass }
