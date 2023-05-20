@@ -119,6 +119,16 @@ export const UnitClass = createFoamClass({
         }
       },
       {
+        name: 'onTurn',
+        code: function() {
+            this.block = 0;
+            this.flex = 0;
+            this.disarm = 0;
+            this.pin = 0;
+            this.pain = 0;
+        }
+      },
+      {
         name: "doDamage",
         code: function (amount, pierce = false) {
           if (this.block > 0 && !pierce) {
