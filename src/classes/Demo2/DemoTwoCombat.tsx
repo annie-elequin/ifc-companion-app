@@ -1,13 +1,13 @@
-import { createFoamClass } from "../foam-kit/model";
-import { CombatClass } from './Abstract/CombatClass';
+import { createFoamClass } from "../../foam-kit/model";
+import { CombatClass } from '../Abstract/CombatClass';
 
 import { BlockGainClass, DamageGainClass, PierceGainClass,
-  PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass, PainGainClass } from "./Gains";
-import { CassiusClass, FoulbornClass } from './Mercenaries';
-import { RumblebeesClass } from './Monsters';
+  PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass } from "../Gains";
+import { CassiusClass, FoulbornClass } from '../Mercenaries';
+import { RumblebeesClass } from '../Monsters';
 
-export const CombatB = createFoamClass({
-  name: 'CombatB',
+export const DemoTwoCombat = createFoamClass({
+  name: 'DemoTwoCombat',
   inherits: CombatClass,
   properties: [
     {
@@ -22,7 +22,6 @@ export const CombatB = createFoamClass({
         new PoisonGainClass(),
         new PinGainClass(),
         new DisarmGainClass(),
-        // new PainGainClass(),
       ]
     },
     {
@@ -37,7 +36,6 @@ export const CombatB = createFoamClass({
       name: 'monsters',
       type: 'array',
       value: [
-        new RumblebeesClass(),
         new RumblebeesClass(),
         new RumblebeesClass(),
         new RumblebeesClass(),

@@ -1,6 +1,6 @@
 import { createFoamClass } from "../../foam-kit/model";
 import { StepClass } from "../Abstract/StepClass";
-import { CombatC } from "../CombatC";
+import { DemoThreeCombat } from "../Demo3/DemoThreeCombat";
 
 const DemoThreeClass = createFoamClass({
   name: "DemoThree",
@@ -12,7 +12,7 @@ const DemoThreeClass = createFoamClass({
       value: [
         {
           type: 'combat',
-          value: new CombatC()
+          value: new DemoThreeCombat()
         }
       ],
     },
