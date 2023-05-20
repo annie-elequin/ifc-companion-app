@@ -1,33 +1,31 @@
 import { Box, Button, Center, Heading } from "native-base";
 import React, { useContext } from "react";
 import { AppContext, actions } from "../../context/AppContext";
-import { DemoOne } from "../../classes/flows";
 import Background from "../../assets/background";
+import { DemoOne } from "../../classes/flows/Demo1";
+import { DemoTwo } from "../../classes/flows/Demo2";
+import { DemoThree } from "../../classes/flows/Demo3";
+import { DemoFour } from "../../classes/flows/Demo4";
+
+const demos = [
+  { key: 'one', label: 'FC / A.R.M.', flow: DemoOne },
+  { key: 'two', label: 'FC / Bees', flow: DemoTwo },
+  { key: 'three', label: 'DS / A.R.M.', flow: DemoThree },
+  { key: 'four', label: 'DS / Bees', flow: DemoFour },
+]
 
 export default function StartScreen({ navigation }) {
   const { dispatch } = useContext(AppContext);
 
-  const onSelectDemo = (key) => {
-    if (key === "one") {
+  const onSelectDemo = (demo) => {
       navigation.navigate("DemoView");
       dispatch({
         action: actions.startDemo,
         payload: {
-          demo: "one",
-          flow: DemoOne,
+          demo: demo.key,
+          flow: demo.flow,
         },
       });
-    } else if (key === "two") {
-      alert("Demo Two not ready yet");
-      // navigation.navigate('DemoTwoScene');
-      // dispatch({
-      //   action: actions.startDemo,
-      //   payload: {
-      //     demo: 'two',
-      //     flow: DemoTwoFlow,
-      //   }
-      // })
-    }
   };
 
   return (
@@ -39,23 +37,17 @@ export default function StartScreen({ navigation }) {
         <Heading mb="16" fontFamily={"Orbitron_700Bold"}>
           Interstellar Fight Club
         </Heading>
-        <Button
-          onPress={() => onSelectDemo("one")}
-          mb="8"
-          w="300"
-          h="100"
-          rounded="full"
-        >
-          <Heading fontFamily={"Orbitron_700Bold"}>Demo One</Heading>
-        </Button>
-        <Button
-          onPress={() => onSelectDemo("two")}
-          w="300"
-          h="100"
-          rounded="full"
-        >
-          <Heading fontFamily={"Orbitron_700Bold"}>Demo Two</Heading>
-        </Button>
+        {demos.map(d => (
+            <Button
+              onPress={() => onSelectDemo(d)}
+              mb="8"
+              w="300"
+              h="100"
+              rounded="full"
+            >
+              <Heading fontFamily={"Orbitron_700Bold"}>{d.label}</Heading>
+            </Button>
+        ))}
       </Center>
     </Center>
   );

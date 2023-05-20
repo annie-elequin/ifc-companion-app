@@ -4,10 +4,10 @@ import { CombatClass } from './Abstract/CombatClass';
 import { BlockGainClass, DamageGainClass, PierceGainClass,
   PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass, PainGainClass } from "./Gains";
 import { CassiusClass, FoulbornClass } from './Mercenaries';
-import { ArmadillosClass } from './Monsters';
+import { RumblebeesClass } from './Monsters';
 
-export const CombatA = createFoamClass({
-  name: 'CombatA',
+export const CombatB = createFoamClass({
+  name: 'CombatB',
   inherits: CombatClass,
   properties: [
     {
@@ -37,12 +37,15 @@ export const CombatA = createFoamClass({
       name: 'monsters',
       type: 'array',
       value: [
-        new ArmadillosClass(),
-        new ArmadillosClass(),
-        new ArmadillosClass(),
-        new ArmadillosClass(),
-        new ArmadillosClass(),
-        new ArmadillosClass(),
+        new RumblebeesClass(),
+        new RumblebeesClass(),
+        new RumblebeesClass(),
+        new RumblebeesClass(),
+        new RumblebeesClass(),
+        new RumblebeesClass(),
+        new RumblebeesClass(),
+        new RumblebeesClass(),
+        new RumblebeesClass(),
       ]
     }
   ],

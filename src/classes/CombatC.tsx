@@ -6,8 +6,8 @@ import { BlockGainClass, DamageGainClass, PierceGainClass,
 import { CassiusClass, DreyaClass, FoulbornClass, ScourgeClass } from './Mercenaries';
 import { ArmadillosClass } from './Monsters';
 
-export const CombatA = createFoamClass({
-  name: 'CombatA',
+export const CombatC = createFoamClass({
+  name: 'CombatC',
   inherits: CombatClass,
   properties: [
     {
@@ -29,8 +29,8 @@ export const CombatA = createFoamClass({
       name: 'mercenaries',
       type: 'array',
       value: [
-        new FoulbornClass(),
-        new CassiusClass(),
+        new DreyaClass(),
+        new ScourgeClass(),
       ]
     },
     {

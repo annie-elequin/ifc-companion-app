@@ -57,7 +57,7 @@ const RumblebeesClass = createFoamClass({
     {
       name: 'image',
       type: 'image',
-      value: require('../assets/combat/armadillos.jpeg')
+      value: require('../assets/combat/rumblebee.jpg'),
     },
     {
       name: 'maxHealth',
@@ -67,4 +67,4 @@ const RumblebeesClass = createFoamClass({
   ],
 })
 
-export { BerserkerBadgerClass, ArmadillosClass }
+export { BerserkerBadgerClass, ArmadillosClass, RumblebeesClass }
