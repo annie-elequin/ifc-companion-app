@@ -17,6 +17,10 @@ export const UnitClass = createFoamClass({
     name: "UnitClass",
     properties: [
       {
+        name: 'id',
+        type: 'string',
+      },
+      {
         name: "health",
         type: "number",
         value: 0,
@@ -209,7 +213,7 @@ function UnitView({ value }) {
     const onSelectedChange = (val) => {
       value.isSelected = val;
     };
-  
+
     return (
       <View flexDirection="column" 
       margin={"2"}
@@ -219,7 +223,7 @@ function UnitView({ value }) {
       >
         <View
           w="500"
-          h="150"
+          h="100"
           bgColor="darkBlue.800"
           borderColor="cyan.200"
           borderWidth={3}
@@ -288,9 +292,9 @@ function UnitView({ value }) {
             </HStack>
           </VStack>
         </View>
-        <View width="full" height={10} bg='coolGray.800' position={'relative'}>
+        <View width="full" height={7} bg='coolGray.800' position={'relative'}>
           <View width={`${healthPercentage}%`} height={10} bg='red.700' />
-          <Text fontFamily={'Orbitron_400Regular'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} fontSize={24} position={'absolute'} top={0} left={0} right={0} bottom={0}>{health} / {maxHealth}</Text>
+          <Text fontFamily={'Orbitron_400Regular'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} fontSize={20} position={'absolute'} top={0} left={0} right={0} bottom={0}>{health} / {maxHealth}</Text>
         </View>
       </View>
     );

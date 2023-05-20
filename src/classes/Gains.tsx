@@ -1,6 +1,41 @@
 import { createFoamClass } from "../foam-kit/model";
 import { GainClass } from "./Abstract/GainClass";
 
+export const HealthGainClass = createFoamClass({
+  name: "HealthGainClass",
+  inherits: GainClass,
+  properties: [
+    {
+      name: "icon",
+      type: "string",
+      value: "octagram",
+    },
+    {
+      name: "color",
+      type: "string",
+      value: "#8B0000",
+    },
+  ],
+  methods: [
+    {
+      name: "applyGainToUnits",
+      code: function (mercenaries, monsters) {
+        const amount = this.amount;
+
+        const addHealth = function (unit) {
+          if (unit.isSelected) {
+            unit.increaseHealth(amount)
+          }
+        }
+
+        mercenaries.forEach(m => addHealth(m))
+        monsters.forEach(m => addHealth(m))
+      },
+    }
+  ],
+  actions: [],
+})
+
 export const DamageGainClass = createFoamClass({
     name: "DamageGainClass",
     inherits: GainClass,

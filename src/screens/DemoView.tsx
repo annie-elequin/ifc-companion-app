@@ -33,7 +33,7 @@ export default function DemoView({ navigation }) {
   const step = steps[currentStepIndex];
 
   return (
-    <Center h="full" bg="darkBlue.900" style={{ position: "relative" }}>
+    <Box h="full" w="full" bg="darkBlue.900" style={{ position: "relative" }}>
       <Fab
         renderInPortal={false}
         placement="top-left"
@@ -50,6 +50,6 @@ export default function DemoView({ navigation }) {
         icon={<MaterialCommunityIcons name="skip-next" color="white" size={28} />}
       />
       {step.value.toElement()}
-    </Center>
+    </Box>
   );
 }
