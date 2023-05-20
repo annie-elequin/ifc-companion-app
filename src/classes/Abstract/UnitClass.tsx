@@ -83,6 +83,21 @@ export const UnitClass = createFoamClass({
     ],
     methods: [
       {
+        name: 'reset',
+        code: function() {
+            this.health = this.maxHealth;
+            this.block = 0;
+            this.poison = 0;
+            this.wound = 0;
+            this.flex = 0;
+            this.disarm = 0;
+            this.pin = 0;
+            this.pain = 0;
+            this.isDead = false;
+            this.isSelected = false;
+        }
+      },
+      {
         name: "doDamage",
         code: function (amount, pierce = false) {
           if (this.block > 0 && !pierce) {

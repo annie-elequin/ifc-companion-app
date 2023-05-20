@@ -17,6 +17,22 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
     mercenaries.forEach(m => m.isSelected = false)
     monsters.forEach(m => m.isSelected = false)
   };
+  const resetUnits = () => {
+    mercenaries.forEach(m => {
+      if (m.isSelected) {
+          m.reset();
+      }
+    })
+    monsters.forEach(m => {
+      if (m.isSelected) {
+          m.reset();
+      }
+    })
+  };
+  const resetAll = () => {
+    mercenaries.forEach(m => m.reset())
+    monsters.forEach(m => m.reset())
+  };
   return (
     <Box
       bg="darkBlue.800"
@@ -48,10 +64,18 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
         <Heading>Confirm</Heading>
       </Button>
       <Button
+        style={{ width: 250, height: 80 }}
+        rounded="full"
+        onPress={resetUnits}
+      >
+        <Heading>Reset Selected</Heading>
+      </Button>
+      <Button
         style={{ width: 200, height: 80 }}
         rounded="full"
+        onPress={resetAll}
       >
-        <Heading>Next Turn</Heading>
+        <Heading>Reset All</Heading>
       </Button>
     </Box>
   );
