@@ -1,9 +1,11 @@
 import React from "react";
 import {
   AspectRatio,
+  Box,
   HStack,
   Icon,
   Image,
+  Pressable,
   Text,
   VStack,
   View,
@@ -75,7 +77,12 @@ export const UnitClass = createFoamClass({
         name: 'isSelected',
         type: 'boolean',
         value: false,
-      }
+      },
+      {
+        name: 'isActive',
+        type: 'boolean',
+        value: true,
+      },
     ],
     methods: [
       {
@@ -194,6 +201,7 @@ function UnitView({ value }) {
     const [health] = useProperty({ value, property: "health" });
     const [maxHealth] = useProperty({ value, property: "maxHealth" });
     const [isSelected] = useProperty({ value, property: "isSelected" });
+    const [isActive] = useProperty({ value, property: "isActive" });
   
     // Gains
     const [block] = useProperty({ value, property: "block" });
@@ -202,14 +210,18 @@ function UnitView({ value }) {
     const [poison] = useProperty({ value, property: "poison" });
     const [pin] = useProperty({ value, property: "pin" });
     const [disarm] = useProperty({ value, property: "disarm" });
-    const [pain] = useProperty({ value, property: "pain" });
   
     const healthPercentage = (health / maxHealth) * 100;
+    const unitOpacity = isActive ? 0 : 0.8;
   
     const onSelectedChange = (val) => {
       value.isSelected = val;
     };
   
+    const onActiveChanged = () => {
+      value.isActive = !value.isActive;
+    }
+
     return (
       <View flexDirection="column" 
       margin={"2"}
@@ -232,8 +244,12 @@ function UnitView({ value }) {
           style={{ position: "relative" }}
         >
           <AspectRatio ratio={1}>
-            <Image w="100%" h="100%" source={{ uri: image }} alt="mercenary" />
+            <Pressable onPress={onActiveChanged}>
+              <Image w="100%" h="100%" source={{ uri: image }} alt="mercenary" />
+              <Box position="absolute" top="0" left="0" w="100%" h="100%" bgColor={"#000000"} style={{opacity: unitOpacity}}></Box>
+            </Pressable>
           </AspectRatio>
+          
           <Checkbox
             value={isSelected}
             onValueChange={onSelectedChange}
