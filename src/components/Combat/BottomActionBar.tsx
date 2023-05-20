@@ -33,6 +33,10 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
     mercenaries.forEach(m => m.reset())
     monsters.forEach(m => m.reset())
   };
+  const nextRound = () => {
+    mercenaries.forEach(m => m.onTurn())
+    monsters.forEach(m => m.onTurn())
+  };
   return (
     <Box
       bg="darkBlue.800"
@@ -76,6 +80,13 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
         onPress={resetAll}
       >
         <Heading>Reset All</Heading>
+      </Button>
+      <Button
+        style={{ width: 200, height: 80 }}
+        rounded="full"
+        onPress={nextRound}
+      >
+        <Heading>Next Round</Heading>
       </Button>
     </Box>
   );
