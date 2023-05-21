@@ -1,7 +1,8 @@
 import React from "react";
 import { createFoamClass } from "../../foam-kit/model";
 
-import GainIcon from "../../components/GainIcon";
+import GainIcon from "../../components/Gain/GainIcon";
+import GainPill from "../../components/Gain/GainPill";
 
 export const GainClass = createFoamClass({
     name: "GainClass",
@@ -24,11 +25,22 @@ export const GainClass = createFoamClass({
     ],
     methods: [
       {
-        name: "toElement",
+        name: "toIconElement",
         code: function () {
           return React.createElement(
             function ({ value }) {
               return <GainIcon value={value}/>;
+            },
+            { value: this }
+          );
+        },
+      },
+      {
+        name: "toPillElement",
+        code: function () {
+          return React.createElement(
+            function ({ value }) {
+              return <GainPill value={value}/>;
             },
             { value: this }
           );

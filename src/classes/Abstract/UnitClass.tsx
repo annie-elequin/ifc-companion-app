@@ -11,9 +11,10 @@ import {
   View,
 } from "native-base";
 import Checkbox from "expo-checkbox";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createFoamClass } from "../../foam-kit/model";
 import { useProperty } from "../../foam-kit/hooks";
+import { BlockGainClass, PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass } from "../Gains";
+import GainPill from "../../components/Gain/GainPill";
 
 export const UnitClass = createFoamClass({
     name: "UnitClass",
@@ -307,13 +308,14 @@ function UnitView({ value }) {
     const [isActive] = useProperty({ value, property: "isActive" });
     const [id] = useProperty({ value, property: "id" });
   
-    // Gains
-    const [block] = useProperty({ value, property: "block" });
-    const [wound] = useProperty({ value, property: "wound" });
-    const [flex] = useProperty({ value, property: "flex" });
-    const [poison] = useProperty({ value, property: "poison" });
-    const [pin] = useProperty({ value, property: "pin" });
-    const [disarm] = useProperty({ value, property: "disarm" });
+    const gains = [
+      new BlockGainClass(),
+      new WoundGainClass(),
+      new FlexGainClass(),
+      new PoisonGainClass(),
+      new PinGainClass(),
+      new DisarmGainClass(),
+    ]
   
     const healthPercentage = (health / maxHealth) * 100;
     const unitOpacity = isActive ? 0 : 0.8;
@@ -325,15 +327,6 @@ function UnitView({ value }) {
     const onActiveChanged = () => {
       value.setActive(!value.isActive);
     }
-
-    const gains = [
-      { name: 'block', value: block, icon: 'shield', color: '#333BFF'},
-      { name: 'wound', value: wound, icon: 'account-injury', color: '#5C4033'},
-      { name: 'flex', value: flex, icon: 'arm-flex', color: '#fff64a'},
-      { name: 'poison', value: poison, icon: 'bottle-tonic-skull', color: '#008000'},
-      { name: 'pin', value: pin, icon: 'anchor', color: '#5A5A5A'},
-      { name: 'disarm', value: disarm, icon: 'hand-back-left-off', color: '#00003f'},
-    ]
 
     return (
       <View flexDirection="column" 
@@ -381,7 +374,7 @@ function UnitView({ value }) {
           />
           <VStack p="1%" w="60%" h="100%" justifyContent="space-between">
             <HStack flexWrap="wrap" space={2}>
-              { gains.map(g => <GainPill gain={g} />)}
+            {gains.map((g, index) => <Box key={index}>{g.toPillElement()}</Box>)}
             </HStack>
           </VStack>
         </View>
@@ -391,14 +384,4 @@ function UnitView({ value }) {
         </View>
       </View>
     );
-}
-
-const GainPill = ({ gain }) => {
-  if (gain.value <= 0) return null;
-  return (
-    <HStack alignItems="center" bg='lightBlue.300' padding='1' borderRadius={15}>
-      <Icon as={<MaterialCommunityIcons name={gain.icon}/>} color={gain.color} size="2xl"/>
-      <Text bold fontSize="2xl" color="#FFFFFF">{gain.value}</Text>
-    </HStack>
-  )
 }
