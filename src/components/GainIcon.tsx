@@ -8,9 +8,30 @@ import {
   Text,
 } from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useProperty } from "../../foam-kit/hooks";
+import { useProperty } from "../foam-kit/hooks";
 import { Tooltip } from 'react-tippy';
-import GainPopover from "./GainPopover";
+import { View as RNView, Pressable as RNPressable, Text as RNText} from 'react-native'
+
+function Popover({increase, decrease}) {
+
+  const pressableStyle = ({pressed}) => {
+    return {
+      backgroundColor: '#7F5CFF', flex: 1, justifyContent: 'center', alignItems: 'center', opacity: pressed ? .5 : 1
+    }
+  }
+
+  return (
+    <RNView style={{ width: 80, height: 120, backgroundColor: '#00000080', borderWidth: 3, borderColor: '#7F5CFF',  marginLeft: 20, padding: 8 }}>
+      <RNPressable style={pressableStyle} onPress={increase}>
+        <RNText style={{ color: 'white', fontSize: 40, fontWeight: 'bold' , textAlign: 'center', marginBottom: 4 }}>+</RNText>
+      </RNPressable>
+      <RNView style={{ height: 8 }} />
+      <RNPressable style={pressableStyle} onPress={decrease}>
+        <RNText style={{ color: 'white', fontSize: 40, fontWeight: 'bold' , textAlign: 'center', marginBottom: 4 }}>-</RNText>
+      </RNPressable>
+    </RNView>
+  )
+}
 
 export default function GainIcon({ value }) {
   const [icon] = useProperty({ value, property: "icon" });
@@ -44,11 +65,11 @@ export default function GainIcon({ value }) {
         <Image
           w="100%"
           h="100%"
-          source={{ uri: require("../../assets/img/gainIconBackground.png") }}
+          source={{ uri: require("../assets/img/gainIconBackground.png") }}
           alt="Gain Icon"
         />
       </AspectRatio>
-      <Tooltip html={<GainPopover increase={increase} decrease={decrease} />} position="right" trigger="click" interactive offset={-20} arrow>
+      <Tooltip html={<Popover increase={increase} decrease={decrease} />} position="right" trigger="click" interactive offset={-20} arrow>
         <HStack zIndex={2} marginBottom="4" padding='2'>
           <Icon  marginLeft="1"
             as={<MaterialCommunityIcons name={icon} />}
