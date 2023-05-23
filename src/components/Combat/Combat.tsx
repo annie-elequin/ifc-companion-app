@@ -12,7 +12,7 @@ export const Combat = ({ value }) => {
     <>
      <HStack h='90%' w='full' style={{ marginTop: 24 }}>
       <VStack alignSelf={'center'}>
-        {gains.map((g, index) => <Box key={index}>{g.toIconElement(mercenaries, monsters)}</Box>)}
+        {gains.map((g, index) => <Box key={index}>{g.toElement(mercenaries, monsters)}</Box>)}
       </VStack>
       <VStack alignItems={'center'}>
         <FlatList
