@@ -37,17 +37,12 @@ export const GainClass = createFoamClass({
       },
       {
         name: "toPillElement",
-        code: function (amount) {
+        code: function (increase, decrease) {
           return React.createElement(
-            function ({ value }) {
-              value.amount = amount;
-
-              console.log(amount)
-              if (value.amount <= 0) return null;
-
-              return <GainPill value={value}/>;
+            function ({ value, increase, decrease }) {
+              return <GainPill value={value} increase={increase} decrease={decrease} />;
             },
-            { value: this }
+            { value: this, increase, decrease }
           );
         },
       },

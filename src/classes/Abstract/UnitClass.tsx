@@ -316,13 +316,13 @@ function UnitView({ value }) {
     const [pin] = useProperty({ value, property: "pin" });
     const [disarm] = useProperty({ value, property: "disarm" });
 
-    const gains = [
-      { class: new BlockGainClass(), amount: block },
-      { class: new WoundGainClass(), amount: wound },
-      { class: new FlexGainClass(), amount: flex },
-      { class: new PoisonGainClass(), amount: poison },
-      { class: new PinGainClass(), amount: pin },
-      { class: new DisarmGainClass(), amount: disarm },
+    const UnitGains = [
+      { class: new BlockGainClass({amount: block}), increaseCallback: value.increaseBlock, decreaseCallback: value.decreaseBlock },
+      { class: new WoundGainClass({amount: wound}), increaseCallback: value.increaseWound, decreaseCallback: value.decreaseWound },
+      { class: new FlexGainClass({amount: flex}), increaseCallback: value.increaseFlex, decreaseCallback: value.decreaseFlex },
+      { class: new PoisonGainClass({amount: poison}), increaseCallback: value.increasePoison, decreaseCallback: value.decreasePoison },
+      { class: new PinGainClass({amount: pin}), increaseCallback: value.increasePin, decreaseCallback: value.decreasePin },
+      { class: new DisarmGainClass({amount: disarm}), increaseCallback: value.increaseDisarm, decreaseCallback: value.decreaseDisarm },
     ]
   
     const healthPercentage = (health / maxHealth) * 100;
@@ -382,7 +382,7 @@ function UnitView({ value }) {
           />
           <VStack p="1%" w="60%" h="100%" justifyContent="space-between">
             <HStack flexWrap="wrap" space={2}>
-            {gains.map((g, index) => <Box key={index}>{g.class.toPillElement(g.amount)}</Box>)}
+              {UnitGains.map((g, index) => <Box key={index}>{g.class.toPillElement(g.increaseCallback, g.decreaseCallback)}</Box>)}
             </HStack>
           </VStack>
         </View>

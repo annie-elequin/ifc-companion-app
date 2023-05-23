@@ -39,6 +39,7 @@ export default function StartScreen({ navigation }) {
         </Heading>
         {demos.map(d => (
             <Button
+              key={d.key}
               onPress={() => onSelectDemo(d)}
               mb="8"
               w="300"

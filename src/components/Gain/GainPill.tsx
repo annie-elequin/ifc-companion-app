@@ -10,24 +10,10 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tooltip } from 'react-tippy';
 import GainPopover from "./GainPopover";
 
-export default function GainPill({ value }) {
+export default function GainPill({ value, increase, decrease }) {
   const [icon] = useProperty({ value, property: "icon" });
   const [color] = useProperty({ value, property: "color" });
   const [amount] = useProperty({ value, property: "amount" });
-
-  const increase = () => {
-    value.amount = amount + 1;
-  };
-
-  const decrease = () => {
-    if (value.amount > 0) {
-      value.amount = amount - 1;
-
-      if (value.amount <= 0) {
-        value.amount = amount - 1;
-      }
-    }
-  };
 
   return (
     <View>
