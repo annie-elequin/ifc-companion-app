@@ -96,6 +96,7 @@ export const PierceGainClass = createFoamClass({
           // Pierce damage the units!
           const damageUnit = function (unit) {
             if (unit.isSelected) {
+              unit.decreaseBlock(amount)
               unit.doDamage(amount, true)
             }
           }
