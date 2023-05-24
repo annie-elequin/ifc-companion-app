@@ -126,6 +126,8 @@ export const UnitClass = createFoamClass({
             this.disarm = 0;
             this.pin = 0;
             this.pain = 0;
+
+            this.isActive = true;
         }
       },
       {
