@@ -21,7 +21,7 @@ export enum actions {
   clearDemo,
 }
 
-export function AppProvider({ children }) {
+export function   AppProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (

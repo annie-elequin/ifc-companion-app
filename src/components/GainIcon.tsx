@@ -35,6 +35,7 @@ function Popover({increase, decrease}) {
 
 export default function GainIcon({ value }) {
   const [icon] = useProperty({ value, property: "icon" });
+  const [image] = useProperty({ value, property: "image" });
   const [color] = useProperty({ value, property: "color" });
   const [amount] = useProperty({ value, property: "amount" });
 
@@ -43,9 +44,7 @@ export default function GainIcon({ value }) {
   };
 
   const decrease = () => {
-    if (value.amount > 0) {
-      value.amount = amount - 1;
-    }
+    value.amount = amount - 1;
   };
 
   return (
@@ -71,11 +70,19 @@ export default function GainIcon({ value }) {
       </AspectRatio>
       <Tooltip html={<Popover increase={increase} decrease={decrease} />} position="right" trigger="click" interactive offset={-20} arrow>
         <HStack zIndex={2} marginBottom="4" padding='2'>
-          <Icon  marginLeft="1"
-            as={<MaterialCommunityIcons name={icon} />}
-            color={color}
-            size="4xl"
-          />
+          {
+            icon && (
+              <Icon  marginLeft="1"
+              as={<MaterialCommunityIcons name={icon} />}
+              color={color}
+              size="4xl"
+            />
+            )
+          }
+          { image && (
+              <Image w="35px" h="35px" source={{ uri: image }} alt={'gainIcon'} marginRight={'1'} />
+          )}
+         
           <Box width={50} textAlign={"left"} marginLeft="2">
             <Text
               bold

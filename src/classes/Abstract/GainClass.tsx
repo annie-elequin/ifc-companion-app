@@ -9,7 +9,10 @@ export const GainClass = createFoamClass({
       {
         name: "icon",
         type: "string",
-        value: "sword",
+      },
+      {
+        name: "image",
+        type: "image",
       },
       {
         name: "color",
@@ -20,6 +23,10 @@ export const GainClass = createFoamClass({
         name: 'amount',
         type: 'number',
         value: 0,
+      },
+      {
+        name: 'name',
+        type: 'string',
       }
     ],
     methods: [

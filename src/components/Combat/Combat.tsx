@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, FlatList, HStack, Heading, VStack } from "native-base";
+import { Box, FlatList, HStack, Heading, VStack, View } from "native-base";
 import { useProperty } from "../../foam-kit/hooks";
 import BottomActionBar from "./BottomActionBar";
 
@@ -25,6 +25,7 @@ export const Combat = ({ value }) => {
           numColumns={2}
           renderItem={({ item, index }) => <Box key={index}>{item.toElement()}</Box>}
         />
+        <View height={'10'} />
       </VStack> 
     </HStack>
       <BottomActionBar gains={gains} mercenaries={mercenaries} monsters={monsters} />

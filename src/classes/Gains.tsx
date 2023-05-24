@@ -6,6 +6,11 @@ export const HealthGainClass = createFoamClass({
   inherits: GainClass,
   properties: [
     {
+      name: 'name',
+      type: 'string',
+      value: 'health',
+    },
+    {
       name: "icon",
       type: "string",
       value: "heart",
@@ -19,17 +24,18 @@ export const HealthGainClass = createFoamClass({
   methods: [
     {
       name: "applyGainToUnits",
-      code: function (mercenaries, monsters) {
+      code: function (mercenaries, monsters, id = undefined) {
         const amount = this.amount;
 
-        const addHealth = function (unit) {
-          if (unit.isSelected) {
-            unit.increaseHealth(amount)
+        const modifyHealth = function (unit) {
+          if (unit.isSelected || unit.id === id) {
+            // unit.increaseHealth(amount)
+            unit.modifyGain('health', amount)
           }
         }
 
-        mercenaries.forEach(m => addHealth(m))
-        monsters.forEach(m => addHealth(m))
+        mercenaries.forEach(m => modifyHealth(m))
+        monsters.forEach(m => modifyHealth(m))
       },
     }
   ],
@@ -40,6 +46,11 @@ export const DamageGainClass = createFoamClass({
     name: "DamageGainClass",
     inherits: GainClass,
     properties: [
+      {
+        name: 'name',
+        type: 'string',
+        value: 'damage',
+      },
       {
         name: "icon",
         type: "string",
@@ -54,12 +65,14 @@ export const DamageGainClass = createFoamClass({
     methods: [
       {
         name: "applyGainToUnits",
-        code: function (mercenaries, monsters) {
+        code: function (mercenaries, monsters, id = undefined) {
           const amount = this.amount;
 
           // Damage the units!
           const damageUnit = function (unit) {
-            if (unit.isSelected) {
+            console.log('zzz', {uid: unit.id, id})
+            console.log('zzz', typeof unit.id, typeof id)
+            if (unit.isSelected || unit.id === id) {
               unit.doDamage(amount)
             }
           }
@@ -77,9 +90,14 @@ export const PierceGainClass = createFoamClass({
     inherits: GainClass,
     properties: [
       {
-        name: "icon",
-        type: "string",
-        value: "bow-arrow",
+        name: 'name',
+        type: 'string',
+        value: 'pierce',
+      },
+      {
+        name: 'image',
+        type: 'image',
+        value: require('../assets/icons/pierce.png')
       },
       {
         name: "color",
@@ -90,12 +108,12 @@ export const PierceGainClass = createFoamClass({
     methods: [
       {
         name: "applyGainToUnits",
-        code: function (mercenaries, monsters) {
+        code: function (mercenaries, monsters, id = undefined) {
           const amount = this.amount;
 
           // Pierce damage the units!
           const damageUnit = function (unit) {
-            if (unit.isSelected) {
+            if (unit.isSelected || unit.id === id) {
               unit.decreaseBlock(amount)
               unit.doDamage(amount, true)
             }
@@ -114,6 +132,11 @@ export const BlockGainClass = createFoamClass({
     inherits: GainClass,
     properties: [
       {
+        name: 'name',
+        type: 'string',
+        value: 'block',
+      },
+      {
         name: "icon",
         type: "string",
         value: "shield",
@@ -127,12 +150,12 @@ export const BlockGainClass = createFoamClass({
     methods: [
       {
         name: "applyGainToUnits",
-        code: function (mercenaries, monsters) {
+        code: function (mercenaries, monsters, id = undefined) {
           const amount = this.amount;
 
           // Increase block on the units!
           const increaseBlock = function (unit) {
-            if (unit.isSelected) {
+            if (unit.isSelected || unit.id === id) {
               unit.increaseBlock(amount)
             }
           }
@@ -150,9 +173,14 @@ export const WoundGainClass = createFoamClass({
     inherits: GainClass,
     properties: [
       {
-        name: "icon",
-        type: "string",
-        value: "account-injury",
+        name: 'name',
+        type: 'string',
+        value: 'wound',
+      },
+      {
+        name: 'image',
+        type: 'image',
+        value: require('../assets/icons/wound.png')
       },
       {
         name: "color",
@@ -163,12 +191,12 @@ export const WoundGainClass = createFoamClass({
     methods: [
       {
         name: "applyGainToUnits",
-        code: function (mercenaries, monsters) {
+        code: function (mercenaries, monsters, id = undefined) {
           const amount = this.amount;
 
           // Increase wound on the units!
           const increaseWound = function (unit) {
-            if (unit.isSelected) {
+            if (unit.isSelected || unit.id === id) {
               unit.increaseWound(amount)
             }
           }
@@ -186,6 +214,11 @@ export const FlexGainClass = createFoamClass({
     inherits: GainClass,
     properties: [
       {
+        name: 'name',
+        type: 'string',
+        value: 'flex',
+      },
+      {
         name: "icon",
         type: "string",
         value: "arm-flex",
@@ -199,12 +232,12 @@ export const FlexGainClass = createFoamClass({
     methods: [
       {
         name: "applyGainToUnits",
-        code: function (mercenaries, monsters) {
+        code: function (mercenaries, monsters, id = undefined) {
           const amount = this.amount;
 
           // Add flex to the units!
           const increaseFlex = function (unit) {
-            if (unit.isSelected) {
+            if (unit.isSelected || unit.id === id) {
               unit.increaseFlex(amount)
             }
           }
@@ -222,9 +255,14 @@ export const PoisonGainClass = createFoamClass({
     inherits: GainClass,
     properties: [
       {
-        name: "icon",
-        type: "string",
-        value: "bottle-tonic-skull",
+        name: 'name',
+        type: 'string',
+        value: 'poison',
+      },
+      {
+        name: 'image',
+        type: 'image',
+        value: require('../assets/icons/poison.png')
       },
       {
         name: "color",
@@ -235,12 +273,12 @@ export const PoisonGainClass = createFoamClass({
     methods: [
       {
         name: "applyGainToUnits",
-        code: function (mercenaries, monsters) {
+        code: function (mercenaries, monsters, id = undefined) {
           const amount = this.amount;
 
           // Add poison to the units!
           const increasePoison = function (unit) {
-            if (unit.isSelected) {
+            if (unit.isSelected || unit.id === id) {
               unit.increasePoison(amount)
             }
           }
@@ -258,9 +296,14 @@ export const PinGainClass = createFoamClass({
     inherits: GainClass,
     properties: [
       {
-        name: "icon",
-        type: "string",
-        value: "anchor",
+        name: 'name',
+        type: 'string',
+        value: 'pin',
+      },
+      {
+        name: 'image',
+        type: 'image',
+        value: require('../assets/icons/pin.png')
       },
       {
         name: "color",
@@ -271,12 +314,12 @@ export const PinGainClass = createFoamClass({
     methods: [
       {
         name: "applyGainToUnits",
-        code: function (mercenaries, monsters) {
+        code: function (mercenaries, monsters, id = undefined) {
           const amount = this.amount;
 
           // Add pin to the units!
           const increasePin = function (unit) {
-            if (unit.isSelected) {
+            if (unit.isSelected || unit.id === id) {
               unit.increasePin(amount)
             }
           }
@@ -295,9 +338,14 @@ export const DisarmGainClass = createFoamClass({
   inherits: GainClass,
   properties: [
     {
-      name: "icon",
-      type: "string",
-      value: "hand-back-left-off",
+      name: 'name',
+      type: 'string',
+      value: 'disarm',
+    },
+    {
+      name: 'image',
+      type: 'image',
+      value: require('../assets/icons/disarm.png')
     },
     {
       name: "color",
@@ -308,12 +356,12 @@ export const DisarmGainClass = createFoamClass({
   methods: [
     {
       name: "applyGainToUnits",
-      code: function (mercenaries, monsters) {
+      code: function (mercenaries, monsters, id = undefined) {
         const amount = this.amount;
 
         // Add disarm to the units!
         const increaseDisarm = function (unit) {
-          if (unit.isSelected) {
+          if (unit.isSelected || unit.id === id) {
             unit.increaseDisarm(amount)
           }
         }
@@ -331,6 +379,11 @@ export const PainGainClass = createFoamClass({
   inherits: GainClass,
   properties: [
     {
+      name: 'name',
+      type: 'string',
+      value: 'pain',
+    },
+    {
       name: "icon",
       type: "string",
       value: "star-three-points",
@@ -344,12 +397,12 @@ export const PainGainClass = createFoamClass({
   methods: [
     {
       name: "applyGainToUnits",
-      code: function (mercenaries, monsters) {
+      code: function (mercenaries, monsters, id = undefined) {
         const amount = this.amount;
 
         // Add pain to the units!
         const increasePain = function (unit) {
-          if (unit.isSelected) {
+          if (unit.isSelected || unit.id === id) {
             unit.increasePain(amount)
           }
         }
@@ -367,6 +420,11 @@ export const BlindGainClass = createFoamClass({
   inherits: GainClass,
   properties: [
     {
+      name: 'name',
+      type: 'string',
+      value: 'blind',
+    },
+    {
       name: "icon",
       type: "string",
       value: "eye",
@@ -380,12 +438,12 @@ export const BlindGainClass = createFoamClass({
   methods: [
     {
       name: "applyGainToUnits",
-      code: function (mercenaries, monsters) {
+      code: function (mercenaries, monsters, id = undefined) {
         const amount = this.amount;
 
         // Add pain to the units!
         const increaseBlind = function (unit) {
-          if (unit.isSelected) {
+          if (unit.isSelected || unit.id === id) {
             unit.increaseBlind(amount)
           }
         }
