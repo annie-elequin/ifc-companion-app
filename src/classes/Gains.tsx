@@ -96,6 +96,7 @@ export const PierceGainClass = createFoamClass({
           // Pierce damage the units!
           const damageUnit = function (unit) {
             if (unit.isSelected) {
+              unit.decreaseBlock(amount)
               unit.doDamage(amount, true)
             }
           }
@@ -355,6 +356,42 @@ export const PainGainClass = createFoamClass({
 
         mercenaries.forEach(m => increasePain(m))
         monsters.forEach(m => increasePain(m))
+      },
+    }
+  ],
+  actions: [],
+})
+
+export const BlindGainClass = createFoamClass({
+  name: "BlindGainClass",
+  inherits: GainClass,
+  properties: [
+    {
+      name: "icon",
+      type: "string",
+      value: "eye",
+    },
+    {
+      name: "color",
+      type: "string",
+      value: "#000000",
+    },
+  ],
+  methods: [
+    {
+      name: "applyGainToUnits",
+      code: function (mercenaries, monsters) {
+        const amount = this.amount;
+
+        // Add pain to the units!
+        const increaseBlind = function (unit) {
+          if (unit.isSelected) {
+            unit.increaseBlind(amount)
+          }
+        }
+
+        mercenaries.forEach(m => increaseBlind(m))
+        monsters.forEach(m => increaseBlind(m))
       },
     }
   ],

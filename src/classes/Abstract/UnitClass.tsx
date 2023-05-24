@@ -13,7 +13,7 @@ import {
 import Checkbox from "expo-checkbox";
 import { createFoamClass } from "../../foam-kit/model";
 import { useProperty } from "../../foam-kit/hooks";
-import { BlockGainClass, PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass } from "../Gains";
+import { BlockGainClass, PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass, BlindGainClass } from "../Gains";
 import GainPill from "../../components/Gain/GainPill";
 
 export const UnitClass = createFoamClass({
@@ -64,6 +64,11 @@ export const UnitClass = createFoamClass({
         value: 0,
       },
       {
+        name: "blind",
+        type: "number",
+        value: 0,
+      },
+      {
         name: "isDead",
         type: "boolean",
         value: false,
@@ -101,6 +106,7 @@ export const UnitClass = createFoamClass({
             this.decreasePoison(1);
             this.decreasePin(1);
             this.decreaseDisarm(1);
+            this.decreaseBlind(1);
           }
         }
       },
@@ -115,6 +121,7 @@ export const UnitClass = createFoamClass({
             this.disarm = 0;
             this.pin = 0;
             this.pain = 0;
+            this.blind = 0;
             this.isDead = false;
             this.isSelected = false;
         }
@@ -127,6 +134,9 @@ export const UnitClass = createFoamClass({
             this.disarm = 0;
             this.pin = 0;
             this.pain = 0;
+            this.blind = 0;
+
+            this.isActive = true;
         }
       },
       {
@@ -286,6 +296,22 @@ export const UnitClass = createFoamClass({
         }
       },
       {
+        name: "increaseBlind",
+        code: function (amount) {
+          this.blind += amount;
+        }
+      },
+      {
+        name: "decreaseBlind",
+        code: function (amount) {
+          if (this.blind > amount) {
+            this.blind = this.blind - amount;
+          } else {
+            this.blind = 0;
+          }
+        }
+      },
+      {
         name: "toElement",
         code: function () {
           return React.createElement(
@@ -315,6 +341,8 @@ function UnitView({ value }) {
     const [poison] = useProperty({ value, property: "poison" });
     const [pin] = useProperty({ value, property: "pin" });
     const [disarm] = useProperty({ value, property: "disarm" });
+    const [blind] = useProperty({ value, property: "blind" });
+    
 
     const UnitGains = [
       { class: new BlockGainClass({amount: block}), increaseCallback: value.increaseBlock, decreaseCallback: value.decreaseBlock },
@@ -323,6 +351,7 @@ function UnitView({ value }) {
       { class: new PoisonGainClass({amount: poison}), increaseCallback: value.increasePoison, decreaseCallback: value.decreasePoison },
       { class: new PinGainClass({amount: pin}), increaseCallback: value.increasePin, decreaseCallback: value.decreasePin },
       { class: new DisarmGainClass({amount: disarm}), increaseCallback: value.increaseDisarm, decreaseCallback: value.decreaseDisarm },
+      { class: new BlindGainClass({amount: blind}), increaseCallback: value.increaseBlind, decreaseCallback: value.decreaseBlind },
     ]
   
     const healthPercentage = (health / maxHealth) * 100;
