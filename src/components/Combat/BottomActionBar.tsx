@@ -33,8 +33,8 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
     monsters.forEach(m => m.respawn())
   };
   const nextRound = () => {
-    mercenaries.forEach(m => m.onTurn())
-    monsters.forEach(m => m.onTurn())
+    mercenaries.forEach(m => m.onNextRound())
+    monsters.forEach(m => m.onNextRound())
   };
   return (
     <Box

@@ -88,12 +88,12 @@ export const PierceGainClass = createFoamClass({
       {
         name: "applyGainToUnits",
         code: function (mercenaries, monsters, id = undefined) {
-
+          const amount = this.amount;
           // Pierce damage the units!
           const damageUnit = function (unit) {
             if (unit.isSelected || unit.id === id) {
-              unit.modifyGain('block', -this.amount)
-              unit.doDamage(this.amount, true)
+              unit.modifyGain('block', -amount)
+              unit.doDamage(amount, true)
             }
           }
 

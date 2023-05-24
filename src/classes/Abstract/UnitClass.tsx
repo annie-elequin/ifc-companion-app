@@ -101,11 +101,10 @@ export const UnitClass = createFoamClass({
         this.isActive = active;
 
         if (!active) {
-          this.decreaseWound(1);
-          this.decreasePoison(1);
-          this.decreasePin(1);
-          this.decreaseDisarm(1);
-          this.decreaseBlind(1);
+          this.procPoison();
+          this.modifyGain('pin', -1)
+          this.modifyGain('disarm', -1)
+          this.modifyGain('blind', -1)
         }
       },
     },
@@ -127,13 +126,33 @@ export const UnitClass = createFoamClass({
     {
       name: "onTurn",
       code: function () {
+        this.modifyGain('disarm', -1)
+        this.modifyGain('pin', -1)
+        this.modifyGain('blind', -1)
+        this.procPoison();
+        this.isActive = true;
+      },
+    },
+    {
+      name: "onNextRound",
+      code: function () {
         this.block = 0;
         this.disarm = 0;
         this.pin = 0;
         this.pain = 0;
         this.blind = 0;
+        this.procPoison();
         this.isActive = true;
       },
+    },
+    {
+      name: 'procPoison',
+      code: function() {
+        if (this.poison > 0) {
+          this.modifyGain('health', -this.poison)
+          this.modifyGain('poison', -1)
+        }
+      }
     },
     {
       name: "doDamage",
@@ -189,7 +208,6 @@ function UnitView({ value }) {
   const { state } = useContext(AppContext)
 
   const healthPercentage = (health / maxHealth) * 100;
-  const unitOpacity = isActive ? 0 : 0.8;
 
   const onSelectedChange = (val) => {
     value.isSelected = val;
@@ -223,9 +241,7 @@ function UnitView({ value }) {
       <View
         w="550"
         h="110"
-        bgColor="darkBlue.800"
-        borderColor={borderColor ?? "cyan.200"}
-        borderWidth={7}
+        bgColor="black"
         display="flex"
         flexDirection="row"
         borderRadius={20}
@@ -236,20 +252,12 @@ function UnitView({ value }) {
       >
         <AspectRatio ratio={1}>
           <Pressable onPress={onActiveChanged}>
-            <Image w="100%" h="100%" source={{ uri: image }} alt="mercenary" />
-            <Box
-              position="absolute"
-              top="0"
-              left="0"
-              w="100%"
-              h="100%"
-              bgColor={"#000000"}
-              style={{ opacity: unitOpacity }}
-            ></Box>
+            <Image w="100%" h="100%" source={{ uri: image }} alt="mercenary" borderColor={borderColor ?? "transparent"}
+        borderWidth={7} borderTopLeftRadius={12} borderTopRightRadius={12} style={{ opacity: isActive ? 1 : .5 }} />
           </Pressable>
         </AspectRatio>
         {id && (
-          <Text bold fontSize="xl" color="#FFFFFF" margin=".5" position={'absolute'} style={{ top: -2, left: 0, width: 30, textAlign: 'center' }} bg='black'>
+          <Text bold fontSize="xl" color="#FFFFFF" margin=".5" position={'absolute'} style={{ top: -2, left: -2, width: 30, textAlign: 'center' }} bg='black'>
             {id}
           </Text>
         )}
