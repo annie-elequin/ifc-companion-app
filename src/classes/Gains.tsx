@@ -361,3 +361,39 @@ export const PainGainClass = createFoamClass({
   ],
   actions: [],
 })
+
+export const BlindGainClass = createFoamClass({
+  name: "BlindGainClass",
+  inherits: GainClass,
+  properties: [
+    {
+      name: "icon",
+      type: "string",
+      value: "eye",
+    },
+    {
+      name: "color",
+      type: "string",
+      value: "#000000",
+    },
+  ],
+  methods: [
+    {
+      name: "applyGainToUnits",
+      code: function (mercenaries, monsters) {
+        const amount = this.amount;
+
+        // Add pain to the units!
+        const increaseBlind = function (unit) {
+          if (unit.isSelected) {
+            unit.increaseBlind(amount)
+          }
+        }
+
+        mercenaries.forEach(m => increaseBlind(m))
+        monsters.forEach(m => increaseBlind(m))
+      },
+    }
+  ],
+  actions: [],
+})

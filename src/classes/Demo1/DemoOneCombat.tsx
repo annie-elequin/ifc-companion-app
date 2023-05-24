@@ -2,7 +2,7 @@ import { createFoamClass } from "../../foam-kit/model";
 import { CombatClass } from '../Abstract/CombatClass';
 
 import { BlockGainClass, DamageGainClass, PierceGainClass,
-  PinGainClass, PoisonGainClass, WoundGainClass, DisarmGainClass, HealthGainClass } from "../Gains";
+  PinGainClass, PoisonGainClass, WoundGainClass, DisarmGainClass, HealthGainClass, BlindGainClass } from "../Gains";
 import { CassiusClass, FoulbornClass } from '../Mercenaries';
 import { ArmadillosClass } from '../Monsters';
 
@@ -22,6 +22,7 @@ export const DemoOneCombat = createFoamClass({
         new PoisonGainClass(),
         new PinGainClass(),
         new DisarmGainClass(),
+        new BlindGainClass(),
       ]
     },
     {

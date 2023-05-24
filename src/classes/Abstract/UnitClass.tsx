@@ -63,6 +63,11 @@ export const UnitClass = createFoamClass({
         value: 0,
       },
       {
+        name: "blind",
+        type: "number",
+        value: 0,
+      },
+      {
         name: "isDead",
         type: "boolean",
         value: false,
@@ -100,6 +105,7 @@ export const UnitClass = createFoamClass({
             this.decreasePoison(1);
             this.decreasePin(1);
             this.decreaseDisarm(1);
+            this.decreaseBlind(1);
           }
         }
       },
@@ -114,6 +120,7 @@ export const UnitClass = createFoamClass({
             this.disarm = 0;
             this.pin = 0;
             this.pain = 0;
+            this.blind = 0;
             this.isDead = false;
             this.isSelected = false;
         }
@@ -126,6 +133,7 @@ export const UnitClass = createFoamClass({
             this.disarm = 0;
             this.pin = 0;
             this.pain = 0;
+            this.blind = 0;
 
             this.isActive = true;
         }
@@ -287,6 +295,22 @@ export const UnitClass = createFoamClass({
         }
       },
       {
+        name: "increaseBlind",
+        code: function (amount) {
+          this.blind += amount;
+        }
+      },
+      {
+        name: "decreaseBlind",
+        code: function (amount) {
+          if (this.blind > amount) {
+            this.blind = this.blind - amount;
+          } else {
+            this.blind = 0;
+          }
+        }
+      },
+      {
         name: "toElement",
         code: function () {
           return React.createElement(
@@ -316,6 +340,7 @@ function UnitView({ value }) {
     const [poison] = useProperty({ value, property: "poison" });
     const [pin] = useProperty({ value, property: "pin" });
     const [disarm] = useProperty({ value, property: "disarm" });
+    const [blind] = useProperty({ value, property: "blind" });
   
     const healthPercentage = (health / maxHealth) * 100;
     const unitOpacity = isActive ? 0 : 0.8;
@@ -335,6 +360,7 @@ function UnitView({ value }) {
       { name: 'poison', value: poison, icon: 'bottle-tonic-skull', color: '#008000'},
       { name: 'pin', value: pin, icon: 'anchor', color: '#5A5A5A'},
       { name: 'disarm', value: disarm, icon: 'hand-back-left-off', color: '#00003f'},
+      { name: 'blind', value: blind, icon: 'eye', color: '#000000'},
     ]
 
     return (
