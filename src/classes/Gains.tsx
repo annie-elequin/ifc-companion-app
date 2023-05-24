@@ -7,13 +7,8 @@ export const HealthGainClass = createFoamClass({
   properties: [
     {
       name: "icon",
-      type: "string",
-      value: "heart",
-    },
-    {
-      name: "color",
-      type: "string",
-      value: "#D70040",
+      type: "image",
+      value: require("../assets/combat/gains/health.png"),
     },
   ],
   methods: [
@@ -42,13 +37,8 @@ export const DamageGainClass = createFoamClass({
     properties: [
       {
         name: "icon",
-        type: "string",
-        value: "octagram",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#8B0000",
+        type: "image",
+        value: require("../assets/combat/gains/damage.png"),
       },
     ],
     methods: [
@@ -78,13 +68,8 @@ export const PierceGainClass = createFoamClass({
     properties: [
       {
         name: "icon",
-        type: "string",
-        value: "bow-arrow",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#964B00",
+        type: "image",
+        value: require("../assets/combat/gains/pierce.png"),
       },
     ],
     methods: [
@@ -115,13 +100,8 @@ export const BlockGainClass = createFoamClass({
     properties: [
       {
         name: "icon",
-        type: "string",
-        value: "shield",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#333BFF",
+        type: "image",
+        value: require("../assets/combat/gains/block.png"),
       },
     ],
     methods: [
@@ -151,13 +131,8 @@ export const WoundGainClass = createFoamClass({
     properties: [
       {
         name: "icon",
-        type: "string",
-        value: "account-injury",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#5C4033",
+        type: "image",
+        value: require("../assets/combat/gains/wound.png"),
       },
     ],
     methods: [
@@ -187,13 +162,8 @@ export const FlexGainClass = createFoamClass({
     properties: [
       {
         name: "icon",
-        type: "string",
-        value: "arm-flex",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#fff64a",
+        type: "image",
+        value: require("../assets/combat/gains/disarm.png"),
       },
     ],
     methods: [
@@ -223,13 +193,8 @@ export const PoisonGainClass = createFoamClass({
     properties: [
       {
         name: "icon",
-        type: "string",
-        value: "bottle-tonic-skull",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#008000",
+        type: "image",
+        value: require("../assets/combat/gains/poison.png"),
       },
     ],
     methods: [
@@ -259,13 +224,8 @@ export const PinGainClass = createFoamClass({
     properties: [
       {
         name: "icon",
-        type: "string",
-        value: "anchor",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#5A5A5A",
+        type: "image",
+        value: require("../assets/combat/gains/pin.png"),
       },
     ],
     methods: [
@@ -296,13 +256,8 @@ export const DisarmGainClass = createFoamClass({
   properties: [
     {
       name: "icon",
-      type: "string",
-      value: "hand-back-left-off",
-    },
-    {
-      name: "color",
-      type: "string",
-      value: "#00003f",
+      type: "image",
+      value: require("../assets/combat/gains/disarm.png"),
     },
   ],
   methods: [
@@ -332,13 +287,8 @@ export const PainGainClass = createFoamClass({
   properties: [
     {
       name: "icon",
-      type: "string",
-      value: "star-three-points",
-    },
-    {
-      name: "color",
-      type: "string",
-      value: "#080a0a",
+      type: "image",
+      value: require("../assets/combat/gains/disarm.png"),
     },
   ],
   methods: [
@@ -368,13 +318,8 @@ export const BlindGainClass = createFoamClass({
   properties: [
     {
       name: "icon",
-      type: "string",
-      value: "eye",
-    },
-    {
-      name: "color",
-      type: "string",
-      value: "#000000",
+      type: "image",
+      value: require("../assets/combat/gains/blind.png"),
     },
   ],
   methods: [

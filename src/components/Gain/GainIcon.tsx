@@ -3,7 +3,6 @@ import {
   AspectRatio,
   Box,
   HStack,
-  Icon,
   Image,
   Text,
 } from "native-base";
@@ -14,7 +13,6 @@ import GainPopover from "./GainPopover";
 
 export default function GainIcon({ value }) {
   const [icon] = useProperty({ value, property: "icon" });
-  const [color] = useProperty({ value, property: "color" });
   const [amount] = useProperty({ value, property: "amount" });
 
   const increase = () => {
@@ -45,15 +43,16 @@ export default function GainIcon({ value }) {
           w="100%"
           h="100%"
           source={{ uri: require("../../assets/img/gainIconBackground.png") }}
-          alt="Gain Icon"
+          alt="Gain Icon Background"
         />
       </AspectRatio>
       <Tooltip html={<GainPopover increase={increase} decrease={decrease} />} position="right" trigger="click" interactive offset={-20} arrow>
         <HStack zIndex={2} marginBottom="4" padding='2'>
-          <Icon  marginLeft="1"
-            as={<MaterialCommunityIcons name={icon} />}
-            color={color}
-            size="4xl"
+          <Image marginLeft="2"
+            w="10"
+            h="10"
+            source={{ uri: icon }}
+            alt="Gain Icon"
           />
           <Box width={50} textAlign={"left"} marginLeft="2">
             <Text

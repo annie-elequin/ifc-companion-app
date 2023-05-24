@@ -9,13 +9,8 @@ export const GainClass = createFoamClass({
     properties: [
       {
         name: "icon",
-        type: "string",
-        value: "sword",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#000000",
+        type: "image",
+        value: require("../../assets/combat/gains/health.png"),
       },
       {
         name: 'amount',

@@ -3,7 +3,6 @@ import {
   AspectRatio,
   Box,
   HStack,
-  Icon,
   Image,
   Pressable,
   Text,
@@ -13,8 +12,7 @@ import {
 import Checkbox from "expo-checkbox";
 import { createFoamClass } from "../../foam-kit/model";
 import { useProperty } from "../../foam-kit/hooks";
-import { BlockGainClass, PinGainClass, PoisonGainClass, FlexGainClass, WoundGainClass, DisarmGainClass, BlindGainClass } from "../Gains";
-import GainPill from "../../components/Gain/GainPill";
+import { BlockGainClass, PinGainClass, PoisonGainClass, WoundGainClass, DisarmGainClass, BlindGainClass } from "../Gains";
 
 export const UnitClass = createFoamClass({
     name: "UnitClass",
@@ -81,7 +79,7 @@ export const UnitClass = createFoamClass({
       {
         name: "image",
         type: "image",
-        value: require("../../assets/combat/unit-placeholder.webp"),
+        value: require("../../assets/combat/gains/health.png"),
       },
       {
         name: 'isSelected',
@@ -337,7 +335,6 @@ function UnitView({ value }) {
     // Gains
     const [block] = useProperty({ value, property: "block" });
     const [wound] = useProperty({ value, property: "wound" });
-    const [flex] = useProperty({ value, property: "flex" });
     const [poison] = useProperty({ value, property: "poison" });
     const [pin] = useProperty({ value, property: "pin" });
     const [disarm] = useProperty({ value, property: "disarm" });
@@ -347,7 +344,6 @@ function UnitView({ value }) {
     const UnitGains = [
       { class: new BlockGainClass({amount: block}), increaseCallback: value.increaseBlock, decreaseCallback: value.decreaseBlock },
       { class: new WoundGainClass({amount: wound}), increaseCallback: value.increaseWound, decreaseCallback: value.decreaseWound },
-      { class: new FlexGainClass({amount: flex}), increaseCallback: value.increaseFlex, decreaseCallback: value.decreaseFlex },
       { class: new PoisonGainClass({amount: poison}), increaseCallback: value.increasePoison, decreaseCallback: value.decreasePoison },
       { class: new PinGainClass({amount: pin}), increaseCallback: value.increasePin, decreaseCallback: value.decreasePin },
       { class: new DisarmGainClass({amount: disarm}), increaseCallback: value.increaseDisarm, decreaseCallback: value.decreaseDisarm },
@@ -409,7 +405,7 @@ function UnitView({ value }) {
               right: 10,
             }}
           />
-          <VStack p="1%" w="60%" h="100%" justifyContent="space-between">
+          <VStack p="1%" w="70%" h="100%" justifyContent="space-between">
             <HStack flexWrap="wrap" space={2}>
               {UnitGains.map((g, index) => <Box key={index}>{g.class.toPillElement(g.increaseCallback, g.decreaseCallback)}</Box>)}
             </HStack>
