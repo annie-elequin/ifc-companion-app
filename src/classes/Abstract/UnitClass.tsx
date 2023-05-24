@@ -109,7 +109,7 @@ export const UnitClass = createFoamClass({
         }
       },
       {
-        name: 'reset',
+        name: 'respawn',
         code: function() {
             this.health = this.maxHealth;
             this.block = 0;
