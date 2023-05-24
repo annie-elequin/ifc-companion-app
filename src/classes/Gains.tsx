@@ -12,13 +12,8 @@ export const HealthGainClass = createFoamClass({
     },
     {
       name: "icon",
-      type: "string",
-      value: "heart",
-    },
-    {
-      name: "color",
-      type: "string",
-      value: "#D70040",
+      type: "image",
+      value: require("../assets/combat/gains/health.png"),
     },
   ],
   methods: [
@@ -53,13 +48,8 @@ export const DamageGainClass = createFoamClass({
       },
       {
         name: "icon",
-        type: "string",
-        value: "octagram",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#8B0000",
+        type: "image",
+        value: require("../assets/combat/gains/damage.png"),
       },
     ],
     methods: [
@@ -95,14 +85,9 @@ export const PierceGainClass = createFoamClass({
         value: 'pierce',
       },
       {
-        name: 'image',
-        type: 'image',
-        value: require('../assets/icons/pierce.png')
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#964B00",
+        name: "icon",
+        type: "image",
+        value: require("../assets/icons/pierce.png"),
       },
     ],
     methods: [
@@ -138,13 +123,8 @@ export const BlockGainClass = createFoamClass({
       },
       {
         name: "icon",
-        type: "string",
-        value: "shield",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#333BFF",
+        type: "image",
+        value: require("../assets/combat/gains/block.png"),
       },
     ],
     methods: [
@@ -178,14 +158,9 @@ export const WoundGainClass = createFoamClass({
         value: 'wound',
       },
       {
-        name: 'image',
-        type: 'image',
-        value: require('../assets/icons/wound.png')
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#5C4033",
+        name: "icon",
+        type: "image",
+        value: require("../assets/icons/wound.png"),
       },
     ],
     methods: [
@@ -220,13 +195,8 @@ export const FlexGainClass = createFoamClass({
       },
       {
         name: "icon",
-        type: "string",
-        value: "arm-flex",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#fff64a",
+        type: "image",
+        value: require("../assets/combat/gains/disarm.png"),
       },
     ],
     methods: [
@@ -260,14 +230,9 @@ export const PoisonGainClass = createFoamClass({
         value: 'poison',
       },
       {
-        name: 'image',
-        type: 'image',
-        value: require('../assets/icons/poison.png')
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#008000",
+        name: "icon",
+        type: "image",
+        value: require("../assets/icons/poison.png"),
       },
     ],
     methods: [
@@ -301,14 +266,9 @@ export const PinGainClass = createFoamClass({
         value: 'pin',
       },
       {
-        name: 'image',
-        type: 'image',
-        value: require('../assets/icons/pin.png')
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#5A5A5A",
+        name: "icon",
+        type: "image",
+        value: require("../assets/icons/pin.png"),
       },
     ],
     methods: [
@@ -343,14 +303,9 @@ export const DisarmGainClass = createFoamClass({
       value: 'disarm',
     },
     {
-      name: 'image',
-      type: 'image',
-      value: require('../assets/icons/disarm.png')
-    },
-    {
-      name: "color",
-      type: "string",
-      value: "#00003f",
+      name: "icon",
+      type: "image",
+      value: require("../assets/icons/disarm.png"),
     },
   ],
   methods: [
@@ -385,13 +340,8 @@ export const PainGainClass = createFoamClass({
     },
     {
       name: "icon",
-      type: "string",
-      value: "star-three-points",
-    },
-    {
-      name: "color",
-      type: "string",
-      value: "#080a0a",
+      type: "image",
+      value: require("../assets/combat/gains/disarm.png"),
     },
   ],
   methods: [
@@ -426,13 +376,8 @@ export const BlindGainClass = createFoamClass({
     },
     {
       name: "icon",
-      type: "string",
-      value: "eye",
-    },
-    {
-      name: "color",
-      type: "string",
-      value: "#000000",
+      type: "image",
+      value: require("../assets/combat/gains/blind.png"),
     },
   ],
   methods: [

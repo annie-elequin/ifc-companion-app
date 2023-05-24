@@ -17,21 +17,21 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
     mercenaries.forEach(m => m.isSelected = false)
     monsters.forEach(m => m.isSelected = false)
   };
-  const resetUnits = () => {
+  const respawnUnits = () => {
     mercenaries.forEach(m => {
       if (m.isSelected) {
-          m.reset();
+          m.respawn();
       }
     })
     monsters.forEach(m => {
       if (m.isSelected) {
-          m.reset();
+          m.respawn();
       }
     })
   };
-  const resetAll = () => {
-    mercenaries.forEach(m => m.reset())
-    monsters.forEach(m => m.reset())
+  const respawnAll = () => {
+    mercenaries.forEach(m => m.respawn())
+    monsters.forEach(m => m.respawn())
   };
   const nextRound = () => {
     mercenaries.forEach(m => m.onTurn())
@@ -68,16 +68,16 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
         <Heading>Confirm</Heading>
       </Button>
       <Button
-        style={{ width: 280, height: 60 }}
+        style={{ width: 300, height: 60 }}
         rounded="full"
-        onPress={resetUnits}
+        onPress={respawnUnits}
       >
         <Heading>Respawn Selected</Heading>
       </Button>
       <Button
         style={{ width: 200, height: 60 }}
         rounded="full"
-        onPress={resetAll}
+        onPress={respawnAll}
       >
         <Heading>Respawn All</Heading>
       </Button>

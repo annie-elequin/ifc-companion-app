@@ -1,23 +1,16 @@
 import React from "react";
 import { createFoamClass } from "../../foam-kit/model";
 
-import GainIcon from "../../components/GainIcon";
+import GainIcon from "../../components/Gain/GainIcon";
+import GainPill from "../../components/Gain/GainPill";
 
 export const GainClass = createFoamClass({
     name: "GainClass",
     properties: [
       {
         name: "icon",
-        type: "string",
-      },
-      {
-        name: "image",
         type: "image",
-      },
-      {
-        name: "color",
-        type: "string",
-        value: "#000000",
+        value: require("../../assets/combat/gains/health.png"),
       },
       {
         name: 'amount',
@@ -31,13 +24,24 @@ export const GainClass = createFoamClass({
     ],
     methods: [
       {
-        name: "toElement",
+        name: "toIconElement",
         code: function () {
           return React.createElement(
             function ({ value }) {
               return <GainIcon value={value}/>;
             },
             { value: this }
+          );
+        },
+      },
+      {
+        name: "toPillElement",
+        code: function (increase, decrease) {
+          return React.createElement(
+            function ({ value, increase, decrease }) {
+              return <GainPill value={value} increase={increase} decrease={decrease} />;
+            },
+            { value: this, increase, decrease }
           );
         },
       },

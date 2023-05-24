@@ -11,11 +11,11 @@ import {
   View,
 } from "native-base";
 import Checkbox from "expo-checkbox";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createFoamClass } from "../../foam-kit/model";
 import { useProperty } from "../../foam-kit/hooks";
 import { AppContext } from "../../context/AppContext";
 import {Pressable as RNPressable} from 'react-native';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export const UnitClass = createFoamClass({
   name: "UnitClass",
@@ -115,21 +115,21 @@ export const UnitClass = createFoamClass({
         }
       },
     },
-    {
-      name: "reset",
-      code: function () {
-        this.health = this.maxHealth;
-        this.block = 0;
-        this.poison = 0;
-        this.wound = 0;
-        this.flex = 0;
-        this.disarm = 0;
-        this.pin = 0;
-        this.pain = 0;
-        this.blind = 0;
-        this.isDead = false;
-        this.isSelected = false;
-      },
+      {
+        name: 'respawn',
+        code: function() {
+            this.health = this.maxHealth;
+            this.block = 0;
+            this.poison = 0;
+            this.wound = 0;
+            this.flex = 0;
+            this.disarm = 0;
+            this.pin = 0;
+            this.pain = 0;
+            this.blind = 0;
+            this.isDead = false;
+            this.isSelected = false;
+        }
     },
     {
       name: "onTurn",
@@ -140,7 +140,6 @@ export const UnitClass = createFoamClass({
         this.pin = 0;
         this.pain = 0;
         this.blind = 0;
-
         this.isActive = true;
       },
     },
@@ -443,9 +442,8 @@ function UnitView({ value }) {
             color="green.500"
             size="4xl"
           />
-        </RNPressable>
-
-        <Checkbox
+          </RNPressable>
+          <Checkbox
           value={isSelected}
           onValueChange={onSelectedChange}
           color="darkcyan"
@@ -458,61 +456,16 @@ function UnitView({ value }) {
             right: 10,
           }}
         />
-        <VStack p="1%" w="55%" h="100%" justifyContent="space-between">
-          <HStack flexWrap="wrap" space={1}>
-            {gains.map((g) => (
-              <GainPill gain={g} />
-            ))}
-          </HStack>
-        </VStack>
+          <VStack p="1%" w="70%" h="100%" justifyContent="space-between">
+            <HStack flexWrap="wrap" space={2}>
+              {/* {UnitGains.map((g, index) => <Box key={index}>{g.class.toPillElement(g.increaseCallback, g.decreaseCallback)}</Box>)} */}
+            </HStack>
+          </VStack>
+        </View>
+        <View width="full" height={7} bg='coolGray.800' position={'relative'}>
+          <View width={`${healthPercentage}%`} height={10} bg='red.700' />
+          <Text fontFamily={'Orbitron_400Regular'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} fontSize={20} position={'absolute'} top={0} left={0} right={0} bottom={0}>{health} / {maxHealth}</Text>
+        </View>
       </View>
-      <View width="full" height={7} bg="coolGray.800" position={"relative"}>
-        <View width={`${healthPercentage}%`} height={10} bg="red.700" />
-        <Text
-          fontFamily={"Orbitron_400Regular"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          textAlign={"center"}
-          fontSize={20}
-          position={"absolute"}
-          top={0}
-          left={0}
-          right={0}
-          bottom={0}
-        >
-          {health} / {maxHealth}
-        </Text>
-      </View>
-    </View>
-  );
+    );
 }
-
-const GainPill = ({ gain }) => {
-  if (gain.amount <= 0) return null;
-  const {icon, image} = gain;
-  return (
-    <HStack
-      alignItems="center"
-      bg="lightBlue.300"
-      padding="1"
-      paddingRight="3"
-      borderRadius={15}
-    >
-      {
-            icon && (
-              <Icon  marginLeft="1"
-              as={<MaterialCommunityIcons name={icon} />}
-              color={gain.color}
-              size="4xl"
-            />
-            )
-          }
-          { image && (
-              <Image w="35px" h="35px" source={{ uri: image }} alt={'gainIcon'} marginRight={'1'} />
-          )}
-      <Text bold fontSize="2xl" color="#FFFFFF">
-        {gain.amount}
-      </Text>
-    </HStack>
-  );
-};
