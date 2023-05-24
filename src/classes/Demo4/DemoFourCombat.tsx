@@ -1,4 +1,5 @@
 import { createFoamClass } from "../../foam-kit/model";
+import { monsterColors } from "../../util/monsterColors";
 import { CombatClass } from '../Abstract/CombatClass';
 
 import { BlockGainClass, DamageGainClass, PierceGainClass,
@@ -29,23 +30,23 @@ export const DemoFourCombat = createFoamClass({
       name: 'mercenaries',
       type: 'array',
       value: [
-        new DreyaClass(),
-        new ScourgeClass(),
+        new DreyaClass({ id: 'd' }),
+        new ScourgeClass({ id: 's' }),
       ]
     },
     {
       name: 'monsters',
       type: 'array',
       value: [
-        new RumblebeesClass({ id: '1' }),
-        new RumblebeesClass({ id: '2' }),
-        new RumblebeesClass({ id: '3' }),
-        new RumblebeesClass({ id: '4' }),
-        new RumblebeesClass({ id: '5' }),
-        new RumblebeesClass({ id: '6' }),
-        new RumblebeesClass({ id: '7' }),
-        new RumblebeesClass({ id: '8' }),
-        new RumblebeesClass({ id: '9' }),
+        new RumblebeesClass({ id: '1', borderColor: monsterColors['1'] }),
+        new RumblebeesClass({ id: '2', borderColor: monsterColors['2'] }),
+        new RumblebeesClass({ id: '3', borderColor: monsterColors['3'] }),
+        new RumblebeesClass({ id: '4', borderColor: monsterColors['4'] }),
+        new RumblebeesClass({ id: '5', borderColor: monsterColors['5'] }),
+        new RumblebeesClass({ id: '6', borderColor: monsterColors['6'] }),
+        new RumblebeesClass({ id: '7', borderColor: monsterColors['7'] }),
+        new RumblebeesClass({ id: '8', borderColor: monsterColors['8'] }),
+        new RumblebeesClass({ id: '9', borderColor: monsterColors['9'] }),
       ]
     }
   ],

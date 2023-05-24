@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, FlatList, HStack, Heading, VStack } from "native-base";
+import { Box, FlatList, HStack, Heading, VStack, View } from "native-base";
 import { useProperty } from "../../foam-kit/hooks";
 import BottomActionBar from "./BottomActionBar";
 
@@ -12,7 +12,7 @@ export const Combat = ({ value }) => {
     <>
      <HStack h='90%' w='full' style={{ marginTop: 24 }}>
       <VStack alignSelf={'center'}>
-        {gains.map((g, index) => <Box key={index}>{g.toElement(mercenaries, monsters)}</Box>)}
+        {gains.map((g, index) => <Box key={index}>{g.toIconElement(mercenaries, monsters)}</Box>)}
       </VStack>
       <VStack alignItems={'center'}>
         <FlatList
@@ -25,6 +25,7 @@ export const Combat = ({ value }) => {
           numColumns={2}
           renderItem={({ item, index }) => <Box key={index}>{item.toElement()}</Box>}
         />
+        <View height={'10'} />
       </VStack> 
     </HStack>
       <BottomActionBar gains={gains} mercenaries={mercenaries} monsters={monsters} />

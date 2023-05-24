@@ -1,5 +1,5 @@
 import React from "react";
-import { NativeBaseProvider } from "native-base";
+import { Box, NativeBaseProvider } from "native-base";
 import { theme } from "./src/screens/theme";
 import Navigator from "./src/Navigator";
 import { ThemeContext } from "./src/foam-kit/theme";

@@ -1,4 +1,5 @@
 import { createFoamClass } from "../../foam-kit/model";
+import { monsterColors } from "../../util/monsterColors";
 import { CombatClass } from '../Abstract/CombatClass';
 
 import { BlockGainClass, DamageGainClass, PierceGainClass,
@@ -29,20 +30,20 @@ export const DemoOneCombat = createFoamClass({
       name: 'mercenaries',
       type: 'array',
       value: [
-        new FoulbornClass(),
-        new CassiusClass(),
+        new FoulbornClass({ id: 'f' }),
+        new CassiusClass({ id: 'c' }),
       ]
     },
     {
       name: 'monsters',
       type: 'array',
       value: [
-        new ArmadillosClass({ id: '1' }),
-        new ArmadillosClass({ id: '2' }),
-        new ArmadillosClass({ id: '3' }),
-        new ArmadillosClass({ id: '4' }),
-        new ArmadillosClass({ id: '5' }),
-        new ArmadillosClass({ id: '6' }),
+        new ArmadillosClass({ id: '1', borderColor: monsterColors['1'] }),
+        new ArmadillosClass({ id: '2', borderColor: monsterColors['2'] }),
+        new ArmadillosClass({ id: '3', borderColor: monsterColors['3'] }),
+        new ArmadillosClass({ id: '4', borderColor: monsterColors['4'] }),
+        new ArmadillosClass({ id: '5', borderColor: monsterColors['5'] }),
+        new ArmadillosClass({ id: '6', borderColor: monsterColors['6'] }),
       ]
     }
   ],

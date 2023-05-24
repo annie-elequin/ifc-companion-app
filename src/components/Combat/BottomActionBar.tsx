@@ -4,7 +4,7 @@ import React from "react";
 export default function BottomActionBar({ gains, mercenaries, monsters }) {
   const clearGains = () => {
     gains.forEach((g) => {
-      console.log(g);
+      g.amount = 0;
     });
   };
   const applyGains = () => {
@@ -12,26 +12,25 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
       if (g.amount > 0) {
         g.applyGainToUnits(mercenaries, monsters);
       }
-      g.amount = 0;
     });
     mercenaries.forEach(m => m.isSelected = false)
     monsters.forEach(m => m.isSelected = false)
   };
-  const resetUnits = () => {
+  const respawnUnits = () => {
     mercenaries.forEach(m => {
       if (m.isSelected) {
-          m.reset();
+          m.respawn();
       }
     })
     monsters.forEach(m => {
       if (m.isSelected) {
-          m.reset();
+          m.respawn();
       }
     })
   };
-  const resetAll = () => {
-    mercenaries.forEach(m => m.reset())
-    monsters.forEach(m => m.reset())
+  const respawnAll = () => {
+    mercenaries.forEach(m => m.respawn())
+    monsters.forEach(m => m.respawn())
   };
   const nextRound = () => {
     mercenaries.forEach(m => m.onTurn())
@@ -55,34 +54,34 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
     >
       <Button
         onPress={clearGains}
-        style={{ width: 200, height: 80 }}
+        style={{ width: 200, height: 60 }}
         rounded="full"
       >
         <Heading>Clear</Heading>
       </Button>
       <Button
         onPress={applyGains}
-        style={{ width: 200, height: 80 }}
+        style={{ width: 200, height: 60 }}
         rounded="full"
       >
         <Heading>Confirm</Heading>
       </Button>
       <Button
-        style={{ width: 250, height: 80 }}
+        style={{ width: 300, height: 60 }}
         rounded="full"
-        onPress={resetUnits}
+        onPress={respawnUnits}
       >
-        <Heading>Reset Selected</Heading>
+        <Heading>Respawn Selected</Heading>
       </Button>
       <Button
-        style={{ width: 200, height: 80 }}
+        style={{ width: 200, height: 60 }}
         rounded="full"
-        onPress={resetAll}
+        onPress={respawnAll}
       >
-        <Heading>Reset All</Heading>
+        <Heading>Respawn All</Heading>
       </Button>
       <Button
-        style={{ width: 200, height: 80 }}
+        style={{ width: 200, height: 60 }}
         rounded="full"
         onPress={nextRound}
       >
