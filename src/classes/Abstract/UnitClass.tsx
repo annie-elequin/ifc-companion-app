@@ -99,7 +99,6 @@ export const UnitClass = createFoamClass({
           this.isActive = active;
 
           if (!active) {
-            this.decreaseWound(1);
             this.decreaseFlex(1);
             this.decreasePoison(1);
             this.decreasePin(1);
