@@ -4,7 +4,6 @@ import React from "react";
 export default function BottomActionBar({ gains, mercenaries, monsters }) {
   const clearGains = () => {
     gains.forEach((g) => {
-      console.log(g);
       g.amount = 0;
     });
   };

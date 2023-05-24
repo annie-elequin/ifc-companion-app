@@ -49,11 +49,6 @@ export const UnitClass = createFoamClass({
       value: 0,
     },
     {
-      name: "flex",
-      type: "number",
-      value: 0,
-    },
-    {
       name: "disarm",
       type: "number",
       value: 0,
@@ -107,7 +102,6 @@ export const UnitClass = createFoamClass({
 
         if (!active) {
           this.decreaseWound(1);
-          this.decreaseFlex(1);
           this.decreasePoison(1);
           this.decreasePin(1);
           this.decreaseDisarm(1);
@@ -122,7 +116,6 @@ export const UnitClass = createFoamClass({
             this.block = 0;
             this.poison = 0;
             this.wound = 0;
-            this.flex = 0;
             this.disarm = 0;
             this.pin = 0;
             this.pain = 0;
@@ -135,7 +128,6 @@ export const UnitClass = createFoamClass({
       name: "onTurn",
       code: function () {
         this.block = 0;
-        this.flex = 0;
         this.disarm = 0;
         this.pin = 0;
         this.pain = 0;
@@ -170,160 +162,6 @@ export const UnitClass = createFoamClass({
         console.log(gain, ' adjusted by ', delta, ', final value: ', this[gain])
       }
     },
-    // {
-    //   name: 'modifyBlock',
-    //   code: function(amount) {
-    //     const originalBlock = this.block;
-    //     this.block += amount;
-    //     const delta = originalBlock - this.block;
-    //     if (this.block < 0) {
-    //       this.block = 0;
-    //     }
-    //     console.log('Block adjusted by ', delta, ', final value: ', this.block);
-
-    //   }
-    // },
-    // {
-    //   name: 'modifyHealth',
-    //   code: function(amount) {
-    //     const originalHealth = this.health;
-    //     this.health += amount;
-
-    //   }
-    // },
-    // {
-    //   name: "increaseHealth",
-    //   code: function (amount) {
-    //     if (this.health + amount > this.maxHealth) {
-    //       this.health = this.maxHealth;
-    //     } else {
-    //       this.health = this.health + amount;
-    //     }
-    //   },
-    // },
-    // {
-    //   name: "decreaseHealth",
-    //   code: function (amount) {
-    //     if (this.health > amount) {
-    //       this.health = this.health - amount;
-    //     } else {
-    //       this.health = 0;
-    //       this.isDead = true;
-    //     }
-    //   },
-    // },
-    // {
-    //   name: "increaseWound",
-    //   code: function (amount) {
-    //     this.wound += amount;
-    //   },
-    // },
-    // {
-    //   name: "decreaseWound",
-    //   code: function (amount) {
-    //     if (this.wound > amount) {
-    //       this.wound = this.wound - amount;
-    //     } else {
-    //       this.wound = 0;
-    //     }
-    //   },
-    // },
-    // {
-    //   name: "increaseFlex",
-    //   code: function (amount) {
-    //     this.flex += amount;
-    //   },
-    // },
-    // {
-    //   name: "decreaseFlex",
-    //   code: function (amount) {
-    //     if (this.flex > amount) {
-    //       this.flex = this.flex - amount;
-    //     } else {
-    //       this.flex = 0;
-    //     }
-    //   },
-    // },
-    // {
-    //   name: "increasePoison",
-    //   code: function (amount) {
-    //     this.poison += amount;
-    //   },
-    // },
-    // {
-    //   name: "decreasePoison",
-    //   code: function (amount) {
-    //     if (this.poison > amount) {
-    //       this.poison = this.poison - amount;
-    //     } else {
-    //       this.poison = 0;
-    //     }
-    //   },
-    // },
-    // {
-    //   name: "increasePin",
-    //   code: function (amount) {
-    //     this.pin += amount;
-    //   },
-    // },
-    // {
-    //   name: "decreasePin",
-    //   code: function (amount) {
-    //     if (this.pin > amount) {
-    //       this.pin = this.pin - amount;
-    //     } else {
-    //       this.pin = 0;
-    //     }
-    //   },
-    // },
-    // {
-    //   name: "increaseDisarm",
-    //   code: function (amount) {
-    //     this.disarm += amount;
-    //   },
-    // },
-    // {
-    //   name: "decreaseDisarm",
-    //   code: function (amount) {
-    //     if (this.disarm > amount) {
-    //       this.disarm = this.disarm - amount;
-    //     } else {
-    //       this.disarm = 0;
-    //     }
-    //   },
-    // },
-    // {
-    //   name: "increasePain",
-    //   code: function (amount) {
-    //     this.pain += amount;
-    //   },
-    // },
-    // {
-    //   name: "decreasePain",
-    //   code: function (amount) {
-    //     if (this.pain > amount) {
-    //       this.pain = this.pain - amount;
-    //     } else {
-    //       this.pain = 0;
-    //     }
-    //   },
-    // },
-    // {
-    //   name: "increaseBlind",
-    //   code: function (amount) {
-    //     this.blind += amount;
-    //   },
-    // },
-    // {
-    //   name: "decreaseBlind",
-    //   code: function (amount) {
-    //     if (this.blind > amount) {
-    //       this.blind = this.blind - amount;
-    //     } else {
-    //       this.blind = 0;
-    //     }
-    //   },
-    // },
     {
       name: "toElement",
       code: function () {
@@ -347,15 +185,6 @@ function UnitView({ value }) {
   const [isSelected] = useProperty({ value, property: "isSelected" });
   const [isActive] = useProperty({ value, property: "isActive" });
   const [id] = useProperty({ value, property: "id" });
-
-  // Gains
-  const [block] = useProperty({ value, property: "block" });
-  const [wound] = useProperty({ value, property: "wound" });
-  const [flex] = useProperty({ value, property: "flex" });
-  const [poison] = useProperty({ value, property: "poison" });
-  const [pin] = useProperty({ value, property: "pin" });
-  const [disarm] = useProperty({ value, property: "disarm" });
-  const [blind] = useProperty({ value, property: "blind" });
 
   const { state } = useContext(AppContext)
 
@@ -381,7 +210,7 @@ function UnitView({ value }) {
   };
 
   const combat = state.currentFlow.steps[state.currentFlow.currentStep]
-  const gains = combat.value.gains;
+  const gainsToListOnUnit = [...combat.value.gains].filter(g => g.showOnUnit)
 
   return (
     <View
@@ -458,7 +287,7 @@ function UnitView({ value }) {
         />
           <VStack p="1%" w="70%" h="100%" justifyContent="space-between">
             <HStack flexWrap="wrap" space={2}>
-              {/* {UnitGains.map((g, index) => <Box key={index}>{g.class.toPillElement(g.increaseCallback, g.decreaseCallback)}</Box>)} */}
+              {gainsToListOnUnit.map((g, index) => <Box key={index}>{g.toPillElement(value)}</Box>)}
             </HStack>
           </VStack>
         </View>

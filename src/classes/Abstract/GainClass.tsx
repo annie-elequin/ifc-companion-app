@@ -18,11 +18,36 @@ export const GainClass = createFoamClass({
         value: 0,
       },
       {
-        name: 'name',
+        name: 'label',
         type: 'string',
+      },
+      {
+        name: 'showOnUnit',
+        type: 'boolean',
+        value: true,
       }
     ],
     methods: [
+      {
+        name: "applyGainToUnits",
+        code: function (mercenaries, monsters, id = null) {
+          try {
+            const label = this.label;
+            const amount = this.amount;
+            const modify = function (unit) {
+              if (unit.isSelected || unit.id === id) {
+                unit.modifyGain(label, amount)
+              }
+            }
+    
+            mercenaries.forEach(m => modify(m))
+            monsters.forEach(m => modify(m))
+          } catch (e) {
+            console.warn('caught error in applyGainToUnits for ', this.label)
+            console.warn(e)
+          }
+        },
+      },
       {
         name: "toIconElement",
         code: function () {
@@ -36,12 +61,12 @@ export const GainClass = createFoamClass({
       },
       {
         name: "toPillElement",
-        code: function (increase, decrease) {
+        code: function (unit) {
           return React.createElement(
-            function ({ value, increase, decrease }) {
-              return <GainPill value={value} increase={increase} decrease={decrease} />;
+            function ({ value, unit }) {
+              return <GainPill value={value} unit={unit} />;
             },
-            { value: this, increase, decrease }
+            { value: this, unit }
           );
         },
       },
