@@ -100,6 +100,7 @@ export const UnitClass = createFoamClass({
 
           if (!active) {
             this.decreaseFlex(1);
+            this.doPoisonDamage();
             this.decreasePoison(1);
             this.decreasePin(1);
             this.decreaseDisarm(1);
@@ -232,6 +233,12 @@ export const UnitClass = createFoamClass({
         name: "increasePoison",
         code: function (amount) {
           this.poison += amount;
+        }
+      },
+      {
+        name: "doPoisonDamage",
+        code: function () {
+          this.doDamage(this.poison, true);
         }
       },
       {
