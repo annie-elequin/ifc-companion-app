@@ -54,38 +54,38 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
     >
       <Button
         onPress={clearGains}
-        style={{ width: 200, height: 60 }}
+        style={{ width: '10%', height: 60 }}
         rounded="full"
       >
-        <Heading>Clear</Heading>
+        <Heading fontSize={'2xl'}>Clear</Heading>
       </Button>
       <Button
         onPress={applyGains}
-        style={{ width: 200, height: 60 }}
+        style={{ width: '10%', height: 60 }}
         rounded="full"
       >
-        <Heading>Confirm</Heading>
+        <Heading fontSize={'2xl'}>Confirm</Heading>
       </Button>
       <Button
-        style={{ width: 300, height: 60 }}
+        style={{ width: '15%', height: 60 }}
         rounded="full"
         onPress={respawnUnits}
       >
-        <Heading>Respawn Selected</Heading>
+        <Heading fontSize={'2xl'}>Respawn Selected</Heading>
       </Button>
       <Button
-        style={{ width: 200, height: 60 }}
+        style={{ width: '10%', height: 60 }}
         rounded="full"
         onPress={respawnAll}
       >
-        <Heading>Respawn All</Heading>
+        <Heading fontSize={'2xl'}>Respawn All</Heading>
       </Button>
       <Button
-        style={{ width: 200, height: 60 }}
+        style={{ width: '10%', height: 60 }}
         rounded="full"
         onPress={nextRound}
       >
-        <Heading>Next Round</Heading>
+        <Heading fontSize={'2xl'}>Next Round</Heading>
       </Button>
     </Box>
   );

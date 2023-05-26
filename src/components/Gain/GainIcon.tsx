@@ -23,7 +23,7 @@ export default function GainIcon({ value }) {
       alignItems={"center"}
       justifyContent={"center"}
       borderRadius={200}
-      style={{ position: "relative", width: 180, height: 90 }}
+      style={{ position: "relative", height: 90 }}
     >
       <AspectRatio ratio={611 / 452} height={90} position="absolute" zIndex={0}>
         <Image
