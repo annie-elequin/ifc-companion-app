@@ -11,10 +11,10 @@ const DemoOneClass = createFoamClass({
       name: "steps",
       type: "array",
       value: [
-        {
-          type: 'scene',
-          value: new DemoOneBattleIntro()
-        },
+        // {
+        //   type: 'scene',
+        //   value: new DemoOneBattleIntro()
+        // },
         {
           type: 'combat',
           value: new DemoOneCombat()

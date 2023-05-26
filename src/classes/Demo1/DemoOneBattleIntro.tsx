@@ -22,10 +22,12 @@ export const DemoOneBattleIntro = createFoamClass({
           leftProps: {
             w: "68%",
             height: "85%",
+            bottom: 25,
           },
           rightProps: {
             w: "60%",
             height: "74%",
+            bottom: 25,
             opacity: 0.6,
           },
         },
@@ -39,11 +41,13 @@ export const DemoOneBattleIntro = createFoamClass({
           leftProps: {
             w: "68%",
             height: "85%",
-            opacity: .6
+            opacity: .6,
+            bottom: 25,
           },
           rightProps: {
             w: "60%",
             height: "74%",
+            bottom: 25,
           },
         },
         {
@@ -56,11 +60,13 @@ export const DemoOneBattleIntro = createFoamClass({
           leftProps: {
             w: "68%",
             height: "85%",
+            bottom: 25,
           },
           rightProps: {
             w: "60%",
             height: "74%",
-            opacity: .6
+            opacity: .6,
+            bottom: 25
           },
         },
         {
@@ -73,11 +79,13 @@ export const DemoOneBattleIntro = createFoamClass({
           leftProps: {
             w: "68%",
             height: "85%",
-            opacity: .6
+            opacity: .6,
+            bottom: 25,
           },
           rightProps: {
             w: "60%",
             height: "74%",
+            bottom: 25,
           },
         },
       ],

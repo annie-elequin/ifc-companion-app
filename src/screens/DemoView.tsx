@@ -22,6 +22,10 @@ export default function DemoView({ navigation }) {
     dispatch({ action: actions.clearDemo });
   };
 
+  const nextStep = () => {
+      state.currentFlow.nextStep();
+  }
+
   const [currentStepIndex] = useProperty({
     value: state.currentFlow,
     property: "currentStep",
@@ -48,6 +52,7 @@ export default function DemoView({ navigation }) {
         shadow={2}
         size="lg"
         icon={<MaterialCommunityIcons name="skip-next" color="white" size={28} />}
+        onPress={nextStep}
       />
       {step.value.toElement()}
     </Box>
