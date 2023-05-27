@@ -112,7 +112,7 @@ export default function StartScreen({ navigation }) {
       </Box>
       <Center zIndex={1}>
         <Heading mb="16" fontFamily={"Orbitron_700Bold"}>
-          Interstellar Fight Club (v0.1)
+          Interstellar Fight Club (v0.2)
         </Heading>
 
         <HStack>
