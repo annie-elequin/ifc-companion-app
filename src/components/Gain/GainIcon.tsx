@@ -38,7 +38,7 @@ export default function GainIcon({ value }) {
         position="right"
         trigger="click"
         interactive
-        offset={-20}
+        // offset={-20}
         arrow
       >
         <HStack zIndex={2} marginBottom="4" padding="2">

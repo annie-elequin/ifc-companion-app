@@ -11,19 +11,20 @@ export const Combat = ({ value }) => {
 
   return (
     <>
-      <HStack h="90%" w="100%" style={{ marginTop: 24 }}>
+      <HStack h="90%" w="100%">
         <ScrollView
-          style={{ flexGrow: "0", width: "14%", height: "90%", marginTop: 20 }}
+          style={{ flexGrow: "0", width: "14%", height: "90%", marginTop: '6%' }}
         >
           <VStack>
             {gains.map((g, index) => (
               <Box key={index}>{g.toIconElement(mercenaries, monsters)}</Box>
             ))}
+            <Box h='10%' />
           </VStack>
         </ScrollView>
 
-        <VStack style={{ width: '80%' }}>
-          <ScrollView style={{ width: "100%" }} horizontal>
+        <VStack>
+          <ScrollView style={{ width: "100%", flex: 'unset', borderBottomWidth: 5, borderBottomColor: 'rgba(255,255,255,.5)' }} horizontal>
             <FlatList
               data={mercenaries}
               numColumns={2}

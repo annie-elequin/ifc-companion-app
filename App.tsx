@@ -10,6 +10,9 @@ import {
   Orbitron_400Regular,
   Orbitron_700Bold,
 } from '@expo-google-fonts/orbitron';
+
+import './app.css';
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     Orbitron_400Regular,

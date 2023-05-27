@@ -7,7 +7,7 @@ import { BlockGainClass, DamageGainClass, PierceGainClass,
 import { CassiusClass, FoulbornClass } from '../Mercenaries';
 import { ArmadillosClass } from '../Monsters';
 
-export const DemoOneCombat = createFoamClass({
+export const DemoOneCombatClass = createFoamClass({
   name: 'DemoOneCombat',
   inherits: CombatClass,
   properties: [

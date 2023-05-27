@@ -9,7 +9,7 @@ export default function GainPopover({increase, decrease}) {
   }
 
   return (
-    <RNView style={{ width: 80, height: 120, backgroundColor: '#00000080', borderWidth: 3, borderColor: '#7F5CFF',  marginLeft: 20, padding: 8 }}>
+    <RNView style={{ width: 80, height: 120, backgroundColor: '#00000080', borderWidth: 3, borderColor: '#7F5CFF',  marginLeft: '180%', padding: '2%' }}>
       <RNPressable style={pressableStyle} onPress={increase}>
         <RNText style={{ color: 'white', fontSize: 40, fontWeight: 'bold' , textAlign: 'center', marginBottom: 4 }}>+</RNText>
       </RNPressable>

@@ -46,14 +46,14 @@ export default function DemoView({ navigation }) {
         icon={<MaterialCommunityIcons name="backup-restore" color="white" size={28} />}
         onPress={restartFlow}
       />
-      <Fab
+      {/* <Fab
         placement="top-right"
         renderInPortal={false}
         shadow={2}
         size="lg"
         icon={<MaterialCommunityIcons name="skip-next" color="white" size={28} />}
         onPress={nextStep}
-      />
+      /> */}
       {step.value.toElement()}
     </Box>
   );

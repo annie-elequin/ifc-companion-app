@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { Defs, LinearGradient, Stop, Path } from "react-native-svg"
 const Background = (props) => (
-  <Svg xmlns="http://www.w3.org/2000/svg" width={1500} height={1500} {...props}>
+  <Svg xmlns="http://www.w3.org/2000/svg" width={'100%'} height={'100%'} {...props}>
     <Defs>
       <LinearGradient
         id="a"
