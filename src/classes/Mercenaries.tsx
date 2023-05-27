@@ -52,7 +52,7 @@ const CassiusClass = createFoamClass({
     {
       name: "health",
       type: "number",
-      value: 9,
+      value: 12,
     },
     {
       name: "image",
@@ -62,7 +62,7 @@ const CassiusClass = createFoamClass({
     {
       name: "maxHealth",
       type: "number",
-      value: 9,
+      value: 12,
     },
   ],
 });

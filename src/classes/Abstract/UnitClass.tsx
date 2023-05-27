@@ -182,7 +182,7 @@ export const UnitClass = createFoamClass({
         console.log(
           gain,
           " adjusted by ",
-          delta,
+          -delta,
           ", final value: ",
           this[gain]
         );

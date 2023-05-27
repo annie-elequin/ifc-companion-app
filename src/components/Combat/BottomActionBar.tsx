@@ -15,6 +15,7 @@ export default function BottomActionBar({ gains, mercenaries, monsters }) {
     });
     mercenaries.forEach(m => m.isSelected = false)
     monsters.forEach(m => m.isSelected = false)
+    clearGains();
   };
   const respawnUnits = () => {
     mercenaries.forEach(m => {
