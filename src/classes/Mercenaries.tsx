@@ -8,7 +8,7 @@ const FoulbornClass = createFoamClass({
     {
       name: "health",
       type: "number",
-      value: 12,
+      value: 17,
     },
     {
       name: "image",
@@ -18,7 +18,7 @@ const FoulbornClass = createFoamClass({
     {
       name: "maxHealth",
       type: "number",
-      value: 12,
+      value: 17,
     },
   ],
 });
@@ -30,7 +30,7 @@ const DreyaClass = createFoamClass({
     {
       name: "health",
       type: "number",
-      value: 10,
+      value: 14,
     },
     {
       name: "image",
@@ -40,7 +40,7 @@ const DreyaClass = createFoamClass({
     {
       name: "maxHealth",
       type: "number",
-      value: 10,
+      value: 14,
     },
   ],
 });
@@ -74,7 +74,7 @@ const ScourgeClass = createFoamClass({
     {
       name: "health",
       type: "number",
-      value: 14,
+      value: 22,
     },
     {
       name: "image",
@@ -84,7 +84,7 @@ const ScourgeClass = createFoamClass({
     {
       name: "maxHealth",
       type: "number",
-      value: 14,
+      value: 22,
     },
   ],
 });

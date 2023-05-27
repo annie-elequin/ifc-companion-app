@@ -30,7 +30,7 @@ const ArmadillosClass = createFoamClass({
     {
       name: 'health',
       type: 'number',
-      value: 16,
+      value: 14,
     },
     {
       name: 'image',
@@ -40,7 +40,7 @@ const ArmadillosClass = createFoamClass({
     {
       name: 'maxHealth',
       type: 'number',
-      value: 16
+      value: 14
     }
   ],
 })
