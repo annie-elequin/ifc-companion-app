@@ -11,7 +11,7 @@ export const Combat = ({ value }) => {
 
   return (
     <>
-      <HStack h="90%" w="100%">
+      <HStack h="90%" w="100%" marginTop={24}>
         <ScrollView
           style={{ flexGrow: "0", width: "14%", height: "90%", marginTop: '6%' }}
         >
